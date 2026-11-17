@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalle del servicio | Conecta Corredor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f6f2;
+            color: #263c30;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #26734d;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 10px #00000015;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        .logo-icon {
+            font-size: 27px;
+        }
+
+        .volver {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ffffff80;
+            padding: 10px 17px;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: white;
+            color: #26734d;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 22px;
+        }
+
+        .titulo {
+            margin-bottom: 25px;
+        }
+
+        .titulo h2 {
+            color: #26734d;
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .titulo p {
+            color: #718078;
+            line-height: 1.6;
+        }
+
+        /* TARJETA */
+        .detalle {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #e1ebe3;
+            box-shadow: 0 4px 15px #00000009;
+        }
+
+        .icono {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e3f3e7;
+            border-radius: 15px;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .detalle h2 {
+            color: #26734d;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .descripcion {
+            color: #718078;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* INFORMACION */
+        .informacion {
+            border-top: 1px solid #e1ebe3;
+            padding-top: 20px;
+        }
+
+        .dato {
+            margin-bottom: 20px;
+        }
+
+        .dato strong {
+            display: block;
+            color: #26734d;
+            margin-bottom: 7px;
+        }
+
+        .dato p {
+            color: #718078;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .precio {
+            color: #26734d;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .contacto {
+            background: #e3f3e7;
+            padding: 22px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .contacto h3 {
+            color: #26734d;
+            margin-top: 0;
+        }
+
+        .contacto p {
+            color: #53665a;
+            line-height: 1.6;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #26734d;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #1b5739;
+        }
+
+        .mensaje {
+            background: #e3f3e7;
+            color: #26734d;
+            padding: 13px 17px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718078;
+            font-size: 13px;
+            margin-top: 45px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 17px 5%;
+            }
+
+            .logo h1 {
+                font-size: 19px;
+            }
+
+            main {
+                margin: 25px auto;
+            }
+
+            .detalle {
+                padding: 23px;
+            }
+        }
+
+/* ==========================================
+   CONECTA CORREDOR
+   DETALLE DEL SERVICIO
+   DISEÑO ROSADO Y AZUL PASTEL
+   ========================================== */
+
+:root {
+    --rosado-claro: #fbcfe8;
+    --rosado-suave: #fdf2f8;
+    --rosado-acento: #db579b;
+
+    --azul-claro: #bfdbfe;
+    --azul-suave: #eff6ff;
+    --azul-acento: #2563eb;
+
+    --texto: #334155;
+    --gris: #64748b;
+}
+
+/* FONDO GENERAL */
+body {
+    background: linear-gradient(
+        135deg,
+        #fdf2f8 0%,
+        #faf7ff 50%,
+        #eff6ff 100%
+    );
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+header {
+    background: linear-gradient(
+        110deg,
+        #fbcfe8,
+        #bfdbfe
+    );
+    color: #273b60;
+    padding: 22px 7%;
+    box-shadow: 0 5px 22px #a78bfa20;
+}
+
+.logo h1 {
+    color: #273b60;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+/* BOTON VOLVER */
+.volver {
+    color: #273b60;
+    background: #ffffff90;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.volver:hover {
+    background: white;
+    color: var(--azul-acento);
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO PRINCIPAL */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* TITULO */
+.titulo {
+    background: white;
+    padding: 30px 35px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #f1e5f4;
+    box-shadow: 0 6px 22px #a78bfa12;
+}
+
+.titulo h2 {
+    color: #273b60;
+    font-size: 29px;
+    margin: 0 0 12px;
+}
+
+.titulo p {
+    color: var(--gris);
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* TARJETA DE DETALLE */
+.detalle {
+    background: white;
+    padding: 38px;
+    border-radius: 22px;
+    border: 1px solid #f1e5f4;
+    box-shadow: 0 8px 28px #a78bfa15;
+}
+
+/* ICONO */
+.icono {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(
+        135deg,
+        #fce7f3,
+        #dbeafe
+    );
+    border-radius: 20px;
+    font-size: 34px;
+    margin-bottom: 22px;
+}
+
+/* NOMBRE DEL SERVICIO */
+.detalle h2 {
+    color: #273b60;
+    font-size: 27px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* DESCRIPCION */
+.descripcion {
+    color: var(--gris);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 28px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* INFORMACION DEL SERVICIO */
+.informacion {
+    border-top: 1px solid #e9eaf4;
+    padding-top: 25px;
+}
+
+.dato {
+    background: #f8faff;
+    padding: 18px 20px;
+    border-radius: 13px;
+    margin-bottom: 16px;
+    border: 1px solid #eef2ff;
+}
+
+.dato:nth-child(even) {
+    background: #fff7fb;
+    border-color: #fce7f3;
+}
+
+.dato strong {
+    display: block;
+    color: #273b60;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.dato p {
+    color: var(--gris);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* PRECIO DESTACADO */
+.dato .precio {
+    color: var(--azul-acento);
+    font-size: 27px;
+    font-weight: 800;
+}
+
+/* SECCION DE CONTACTO */
+.contacto {
+    background: linear-gradient(
+        120deg,
+        #fdf2f8,
+        #eff6ff
+    );
+    padding: 28px;
+    border-radius: 18px;
+    margin-top: 30px;
+    border: 1px solid #f1e5f4;
+}
+
+.contacto h3 {
+    color: #273b60;
+    font-size: 21px;
+    margin: 0 0 12px;
+}
+
+.contacto p {
+    color: #526179;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.contacto strong {
+    color: #273b60;
+}
+
+/* BOTON DE WHATSAPP */
+/* SOLO CAMBIA SU APARIENCIA */
+.boton {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px #3b82f640;
+}
+
+/* MENSAJES DE FLASK */
+.mensaje {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-left: 4px solid #60a5fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 3px 12px #3b82f610;
+}
+
+/* PIE DE PAGINA */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gris);
+    font-size: 13px;
+    margin-top: 50px;
+    border-top: 1px solid #eadff0;
+}
+
+/* DISEÑO PARA CELULARES */
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .titulo {
+        padding: 25px 22px;
+    }
+
+    .titulo h2 {
+        font-size: 24px;
+    }
+
+    .detalle {
+        padding: 24px 20px;
+    }
+
+    .detalle h2 {
+        font-size: 23px;
+    }
+
+    .contacto {
+        padding: 22px 18px;
+    }
+
+    .boton {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .volver,
+    .boton {
+        transition: none;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            <h1>Conecta Corredor</h1>
+        </div>
+
+        <a class="volver" href="{{ url_for('servicios_disponibles') }}">
+            Volver a servicios
+        </a>
+    </header>
+
+    <main>
+
+        <!-- MENSAJES -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="mensaje">
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- TITULO -->
+        <section class="titulo">
+            <h2>Información del servicio</h2>
+
+            <p>
+                Conoce los detalles y comunícate directamente
+                con la persona que ofrece este servicio.
+            </p>
+        </section>
+
+        <!-- DETALLE DEL SERVICIO -->
+        <section class="detalle">
+
+            <div class="icono">🛠️</div>
+
+            <h2>{{ servicio.nombre_servicio }}</h2>
+
+            <p class="descripcion">
+                {{ servicio.descripcion }}
+            </p>
+
+            <div class="informacion">
+
+                <div class="dato">
+                    <strong>📍 Ubicación</strong>
+                    <p>{{ servicio.ubicacion }}</p>
+                </div>
+
+                <div class="dato">
+                    <strong>💰 Precio</strong>
+
+                    <p class="precio">
+                        {% if servicio.precio %}
+                            ${{ "{:,.0f}".format(servicio.precio) }}
+                        {% else %}
+                            Precio por consultar
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="dato">
+                    <strong>📂 Categoría</strong>
+                    <p>{{ servicio.categoria }}</p>
+                </div>
+
+                <div class="dato">
+                    <strong>👤 Persona que ofrece el servicio</strong>
+                    <p>{{ servicio.nombre_usuario }}</p>
+                </div>
+
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="contacto">
+
+                <h3>¿Te interesa este servicio?</h3>
+
+                <p>
+                    Comunícate directamente con la persona
+                    que ofrece este servicio para obtener
+                    más información.
+                </p>
+
+                <p>
+                    <strong>Teléfono:</strong>
+                    {{ servicio.telefono_contacto }}
+                </p>
+
+                <a class="boton"
+                   href="https://wa.me/57{{ servicio.telefono_contacto }}">
+                    Contactar por WhatsApp
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Conecta Corredor | Conectando oportunidades y comunidad 🌿</p>
+    </footer>
+
+</body>
+</html>

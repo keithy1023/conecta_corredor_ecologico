@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Postulantes | Conecta Corredor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e5f3fc, #f8fcff, #d8edfa);
+            color: #34495e;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #65a9d5;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 3px 12px #00000012;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        header a {
+            color: #347fae;
+            text-decoration: none;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        header a:hover {
+            background: #e5f3fc;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .encabezado {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 27px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px #0000000d;
+        }
+
+        h2 {
+            color: #2876a5;
+            margin-top: 0;
+        }
+
+        .encabezado p {
+            color: #71879a;
+            margin-bottom: 0;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 26px;
+            border-radius: 15px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 15px #00000010;
+            border-left: 5px solid #65a9d5;
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px #00000015;
+        }
+
+        h3 {
+            color: #2876a5;
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .dato {
+            margin: 13px 0;
+            color: #536879;
+        }
+
+        .dato i {
+            color: #65a9d5;
+            margin-right: 8px;
+        }
+
+        .estado {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-transform: capitalize;
+            font-size: 13px;
+            font-weight: bold;
+            background: #fff1d6;
+            color: #a36b12;
+        }
+
+        .estado-aceptada {
+            background: #e1f3e8;
+            color: #328052;
+        }
+
+        .estado-rechazada {
+            background: #fbe5e7;
+            color: #b94f5b;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #e8eef2;
+        }
+
+        .boton {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 17px;
+            cursor: pointer;
+            color: white;
+            background: #65a9d5;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #347fae;
+            transform: translateY(-2px);
+        }
+
+        .aceptar {
+            background: #55a879;
+        }
+
+        .aceptar:hover {
+            background: #36875b;
+        }
+
+        .rechazar {
+            background: #d66b75;
+        }
+
+        .rechazar:hover {
+            background: #b94f5b;
+        }
+
+        .mensaje {
+            background: #e5f3fc;
+            color: #347fae;
+            padding: 13px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Contacto del postulante */
+
+        .contacto {
+            margin-top: 22px;
+            padding: 20px;
+            background: #f1f8fc;
+            border: 1px solid #d6e9f5;
+            border-radius: 12px;
+        }
+
+        .contacto h4 {
+            color: #2876a5;
+            margin: 0 0 12px;
+            font-size: 17px;
+        }
+
+        .contacto p {
+            color: #536879;
+            line-height: 1.6;
+        }
+
+        .botones-contacto {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .boton-contacto {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 9px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .boton-contacto:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .whatsapp {
+            background: #228b50;
+        }
+
+        .correo {
+            background: #347fae;
+        }
+
+        .vacio {
+            background: white;
+            padding: 45px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .vacio i {
+            font-size: 55px;
+            color: #85b9d9;
+        }
+
+        .vacio h3 {
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8297a7;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            header h1 {
+                font-size: 21px;
+            }
+
+            .encabezado {
+                padding: 22px;
+            }
+
+            .tarjeta {
+                padding: 20px;
+            }
+
+            .acciones form,
+            .acciones button,
+            .boton-contacto {
+                width: 100%;
+            }
+
+            .boton-contacto {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>
+            <i class="bi bi-tree-fill"></i>
+            Conecta Corredor
+        </h1>
+
+        <a href="{{ url_for('mis_empleos') }}">
+            <i class="bi bi-arrow-left"></i>
+            Volver a mis ofertas
+        </a>
+    </header>
+
+    <main>
+
+        <!-- Información de la oferta -->
+        <div class="encabezado">
+            <h2>
+                <i class="bi bi-people-fill"></i>
+                Personas postuladas
+            </h2>
+
+            <p>
+                Revisa las personas interesadas en trabajar contigo
+                y administra sus postulaciones.
+            </p>
+
+            <p style="margin-top: 15px;">
+                <strong>Oferta de empleo:</strong>
+                {{ empleo.titulo }}
+            </p>
+        </div>
+
+        <!-- Mensajes -->
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <div class="mensaje">
+                    <i class="bi bi-info-circle-fill"></i>
+                    {{ mensaje }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- Listado de postulantes -->
+        {% if postulantes %}
+
+            {% for persona in postulantes %}
+
+                <article class="tarjeta">
+
+                    <h3>
+                        <i class="bi bi-person-circle"></i>
+                        {{ persona.nombre }}
+                    </h3>
+
+                    <p class="dato">
+                        <i class="bi bi-envelope-fill"></i>
+                        <strong>Correo:</strong>
+                        {{ persona.correo or 'No disponible' }}
+                    </p>
+
+                    <p class="dato">
+                        <i class="bi bi-telephone-fill"></i>
+                        <strong>Teléfono:</strong>
+                        {{ persona.telefono or 'No disponible' }}
+                    </p>
+
+                    <p class="dato">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <strong>Ubicación:</strong>
+                        {{ persona.ubicacion or 'No registrada' }}
+                    </p>
+
+                    <p class="dato">
+                        <i class="bi bi-calendar-event-fill"></i>
+                        <strong>Fecha de postulación:</strong>
+                        {{ persona.fecha_postulacion }}
+                    </p>
+
+                    <p class="dato">
+                        <i class="bi bi-circle-fill"></i>
+                        <strong>Estado:</strong>
+
+                        <span class="estado
+                            {% if persona.estado == 'aceptada' %}estado-aceptada
+                            {% elif persona.estado == 'rechazada' %}estado-rechazada
+                            {% endif %}">
+                            {{ persona.estado }}
+                        </span>
+                    </p>
+                    
+<!-- Consultar hoja de vida del postulante -->
+<div class="acciones">
+
+    <a
+        href="{{ url_for('ver_hoja_vida_postulante',
+                        id_empleo=empleo.id_empleo,
+                        id_usuario=persona.id_usuario) }}"
+        class="boton"
+        style="text-decoration: none; display: inline-block;"
+    >
+        <i class="bi bi-file-earmark-person-fill"></i>
+        Ver hoja de vida
+    </a>
+
+</div>
+
+                    <!-- Acciones para postulaciones pendientes -->
+                    {% if persona.estado == 'pendiente' %}
+
+                        <div class="acciones">
+
+                            <form method="POST"
+                                  action="{{ url_for('actualizar_postulacion',
+                                  id_empleo=empleo.id_empleo,
+                                  id_postulacion=persona.id_postulacion) }}">
+
+                                <input type="hidden"
+                                       name="estado"
+                                       value="aceptada">
+
+                                <button class="boton aceptar" type="submit">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Aceptar postulación
+                                </button>
+                            </form>
+
+                            <form method="POST"
+                                  action="{{ url_for('actualizar_postulacion',
+                                  id_empleo=empleo.id_empleo,
+                                  id_postulacion=persona.id_postulacion) }}"
+                                  onsubmit="return confirm('¿Seguro que deseas rechazar esta postulación?');">
+
+                                <input type="hidden"
+                                       name="estado"
+                                       value="rechazada">
+
+                                <button class="boton rechazar" type="submit">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                    Rechazar postulación
+                                </button>
+                            </form>
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- Contacto solo para postulaciones aceptadas -->
+                    {% if persona.estado == 'aceptada' %}
+
+                        <div class="contacto">
+
+                            <h4>
+                                <i class="bi bi-chat-dots-fill"></i>
+                                Contactar al postulante
+                            </h4>
+
+                            {% if persona.telefono or persona.correo %}
+
+                                <p>
+                                    Esta persona fue aceptada y
+                                    autorizó compartir sus datos de contacto.
+                                </p>
+
+                                <div class="botones-contacto">
+
+                                    {% if persona.telefono %}
+
+                                        {% set numero = persona.telefono
+                                            | replace(' ', '')
+                                            | replace('-', '')
+                                            | replace('(', '')
+                                            | replace(')', '')
+                                            | replace('+', '') %}
+
+                                        {% if numero|length == 10
+                                              and numero[:1] == '3' %}
+                                            {% set numero = '57' ~ numero %}
+                                        {% endif %}
+
+                                        {% if numero.isdigit() %}
+
+                                            <a
+                                                href="https://wa.me/{{ numero }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="boton-contacto whatsapp"
+                                            >
+                                                <i class="bi bi-whatsapp"></i>
+                                                Contactar por WhatsApp
+                                            </a>
+
+                                        {% endif %}
+
+                                    {% endif %}
+
+                                    {% if persona.correo %}
+
+                                        <a
+                                            href="mailto:{{ persona.correo }}"
+                                            class="boton-contacto correo"
+                                        >
+                                            <i class="bi bi-envelope-fill"></i>
+                                            Enviar correo
+                                        </a>
+
+                                    {% endif %}
+
+                                </div>
+
+                            {% else %}
+
+                                <p>
+                                    El postulante todavía no ha autorizado
+                                    compartir sus datos de contacto.
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endif %}
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <!-- Cuando no hay postulantes -->
+            <section class="vacio">
+
+                <i class="bi bi-people"></i>
+
+                <h3>Aún no hay postulantes</h3>
+
+                <p>
+                    Cuando una persona se postule a esta oferta
+                    de empleo, aparecerá aquí.
+                </p>
+
+            </section>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        © 2026 Conecta Corredor |
+        Conectando oportunidades en nuestra comunidad.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleos disponibles | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+   
+/* ==========================================
+   CONECTA CORREDOR
+   EMPLEOS DISPONIBLES
+   DARK PURPLE & PINK
+   ========================================== */
+
+:root {
+    color-scheme: dark;
+
+    --fondo: #110f1d;
+    --fondo-secundario: #171324;
+    --tarjeta: #21192f;
+    --tarjeta-hover: #2a203c;
+
+    --morado: #a855f7;
+    --morado-hover: #9333ea;
+    --rosado: #e879f9;
+    --rosado-claro: #f0abfc;
+
+    --texto: #f8f5ff;
+    --texto-secundario: #c4b5d6;
+    --borde: #40304f;
+}
+
+/* FONDO GENERAL */
+body {
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* BARRA DE NAVEGACION */
+.navbar {
+    background: #171324;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--borde);
+    box-shadow: 0 5px 25px #00000030;
+}
+
+.navbar-brand {
+    color: #f8f5ff;
+    font-weight: 800;
+    font-size: 23px;
+    transition: color 0.3s;
+}
+
+.navbar-brand i {
+    color: #e879f9;
+    margin-right: 8px;
+}
+
+.navbar-brand:hover {
+    color: #f0abfc;
+}
+
+/* VOLVER AL DASHBOARD */
+.navbar .btn-light {
+    background: #a855f718;
+    color: #f0abfc;
+    border: 1px solid #a855f755;
+    border-radius: 12px;
+    padding: 11px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar .btn-light:hover {
+    background: #a855f7;
+    color: white;
+    border-color: #a855f7;
+    transform: translateY(-2px);
+}
+
+/* ENCABEZADO DE LA PAGINA */
+.header-section {
+    background: linear-gradient(
+        120deg,
+        #332044,
+        #1c2344
+    );
+    padding: 35px;
+    border-radius: 22px;
+    margin-bottom: 32px;
+    border: 1px solid #513663;
+    box-shadow: 0 10px 35px #00000025;
+}
+
+.header-section h2 {
+    color: #f8f5ff;
+    font-size: 29px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.header-section h2 i {
+    color: #e879f9;
+    margin-right: 8px;
+}
+
+/* DESCRIPCION DEL ENCABEZADO */
+.header-section .text-muted {
+    color: #c4b5d6 !important;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* TARJETAS DE EMPLEOS */
+.job-card {
+    background: var(--tarjeta);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        border-color 0.3s,
+        background 0.3s;
+}
+
+.job-card:hover {
+    background: var(--tarjeta-hover);
+    border-color: #a855f780;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px #a855f720;
+}
+
+.job-card .card-body {
+    padding: 27px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TITULO DEL EMPLEO */
+.job-title {
+    color: #f5e8ff;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* CATEGORIA */
+.job-category {
+    background: #e879f91a;
+    color: #f0abfc;
+    border: 1px solid #e879f950;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 25px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 18px;
+}
+
+.job-category i {
+    margin-right: 5px;
+}
+
+/* DESCRIPCION */
+.job-description {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* LINEA DIVISORIA */
+.job-card hr {
+    border: none;
+    border-top: 1px solid #5a4169;
+    opacity: 1;
+    margin: 14px 0 20px;
+}
+
+/* INFORMACION DEL EMPLEO */
+.job-info {
+    color: #d8cde5;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+    overflow-wrap: anywhere;
+}
+
+.job-info strong {
+    color: #f5e8ff;
+}
+
+.job-info i {
+    color: #e879f9;
+    margin-right: 9px;
+    font-size: 16px;
+}
+
+/* DATOS DEL EMPLEADOR */
+.employer-info {
+    border-top: 1px solid var(--borde);
+    padding-top: 18px;
+    margin-top: 12px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.employer-info i {
+    color: #c084fc;
+    margin-right: 8px;
+    font-size: 17px;
+}
+
+.employer-info strong {
+    color: #f5e8ff;
+}
+
+/* BOTON POSTULARME */
+.job-card .btn-success {
+    background: #a855f7;
+    color: white;
+    border: 1px solid #a855f7;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.job-card .btn-success:hover {
+    background: #9333ea;
+    border-color: #9333ea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px #a855f740;
+}
+
+.job-card .btn-success i {
+    margin-right: 7px;
+}
+
+/* BOTON YA TE POSTULASTE */
+.job-card .btn-secondary,
+.job-card .btn-secondary:disabled {
+    background: #332640;
+    color: #c4b5d6;
+    border: 1px solid #58436a;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.job-card .btn-secondary i {
+    color: #c084fc;
+    margin-right: 7px;
+}
+
+/* MENSAJES DE FLASK */
+.alert-info {
+    background: #302040;
+    color: #f0abfc;
+    border: 1px solid #684078;
+    border-left: 4px solid #e879f9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    line-height: 1.6;
+}
+
+/* BOTON CERRAR MENSAJE */
+.alert-info .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.alert-info .btn-close:hover {
+    opacity: 1;
+}
+
+/* CUANDO NO HAY EMPLEOS */
+.empty-state {
+    background: var(--tarjeta);
+    color: var(--texto-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    padding: 55px 25px;
+    text-align: center;
+    box-shadow: 0 8px 28px #00000020;
+}
+
+.empty-state i {
+    display: block;
+    font-size: 55px;
+    color: #c084fc;
+    margin-bottom: 20px;
+}
+
+.empty-state h4 {
+    color: #f5e8ff;
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.empty-state p {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* BOTON VOLVER ADICIONAL */
+.btn-back {
+    background: #a855f7;
+    color: white;
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background: #9333ea;
+    color: white;
+}
+
+/* PIE DE PAGINA */
+footer {
+    text-align: center;
+    color: #a99ab9;
+    padding: 30px 20px;
+    margin-top: 35px;
+    border-top: 1px solid #352442;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar .container {
+        gap: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 19px;
+    }
+
+    .header-section {
+        padding: 27px 23px;
+        border-radius: 18px;
+    }
+
+    .header-section h2 {
+        font-size: 24px;
+    }
+
+    .job-card .card-body {
+        padding: 23px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .btn-light {
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-section h2 {
+        font-size: 22px;
+    }
+
+    .job-title {
+        font-size: 19px;
+    }
+
+    .empty-state {
+        padding: 40px 20px;
+    }
+}
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+    .job-card,
+    .btn-success,
+    .btn-light,
+    .navbar-brand {
+        transition: none;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+                <i class="bi bi-tree-fill"></i>
+                Conecta Corredor
+            </a>
+
+            <a href="{{ url_for('dashboard') }}" class="btn btn-light">
+                <i class="bi bi-arrow-left"></i>
+                Volver al dashboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+
+        <!-- Encabezado -->
+        <div class="header-section">
+            <h2>
+                <i class="bi bi-briefcase-fill"></i>
+                Empleos disponibles
+            </h2>
+
+            <p class="text-muted mb-0">
+                Encuentra nuevas oportunidades laborales y conecta con empleadores
+                de tu comunidad.
+            </p>
+        </div>
+
+        <!-- Mensajes de Flask -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="alert alert-info alert-dismissible fade show"
+                         role="alert">
+                        {{ mensaje }}
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Cerrar">
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Listado de empleos -->
+        {% if empleos %}
+
+            <div class="row g-4">
+
+                {% for empleo in empleos %}
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card job-card shadow-sm">
+
+                            <div class="card-body">
+
+                                <h5 class="job-title">
+                                    {{ empleo.titulo }}
+                                </h5>
+
+                                <span class="job-category">
+                                    <i class="bi bi-tag-fill"></i>
+                                    {{ empleo.categoria }}
+                                </span>
+
+                                <p class="job-description">
+                                    {{ empleo.descripcion }}
+                                </p>
+
+                                <hr>
+
+                                <p class="job-info">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <strong>Ubicación:</strong>
+                                    {{ empleo.ubicacion }}
+                                </p>
+
+                                <p class="job-info">
+                                    <i class="bi bi-cash-coin"></i>
+                                    <strong>Salario:</strong>
+
+                                    {% if empleo.salario is not none %}
+                                        ${{ empleo.salario }}
+                                    {% else %}
+                                        No especificado
+                                    {% endif %}
+                                </p>
+
+                                <p class="job-info">
+                                    <i class="bi bi-file-earmark-text-fill"></i>
+                                    <strong>Contrato:</strong>
+                                    {{ empleo.tipo_contrato }}
+                                </p>
+
+                                <div class="employer-info">
+                                    <i class="bi bi-person-circle"></i>
+                                    <strong>Publicado por:</strong>
+                                    {{ empleo.nombre_empleador }}
+                                </div>
+
+                                <!-- Botón para postularse -->
+                                
+                                {% if session.get('tipo_usuario') == 'habitante' %}
+
+                                    {% if empleo.id_empleo in empleos_postulados %}
+
+                                        <button
+                                            class="btn btn-secondary w-100 mt-3"
+                                            disabled
+                                        >
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            Ya te postulaste
+                                        </button>
+
+                                    {% else %}
+
+                                        <form
+                                            action="{{ url_for('postularse', id_empleo=empleo.id_empleo) }}"
+                                            method="POST"
+                                        >
+                                            <button
+                                                type="submit"
+                                                class="btn btn-success w-100 mt-3"
+                                            >
+                                                <i class="bi bi-send-fill"></i>
+                                                Postularme
+                                            </button>
+                                        </form>
+
+                                    {% endif %}
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- Mensaje cuando no hay empleos -->
+            <div class="empty-state shadow-sm">
+
+                <i class="bi bi-briefcase"></i>
+
+                <h4>No hay ofertas disponibles</h4>
+
+                <p class="mb-0">
+                    Por el momento no hay ofertas de empleo publicadas.
+                    Vuelve pronto para consultar nuevas oportunidades.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <footer>
+        <p class="mb-0">
+            © 2026 Conecta Corredor | Conectando oportunidades en nuestra comunidad.
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

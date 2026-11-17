@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis servicios | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: var(--texto);
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 80%,
+                    rgba(232, 121, 249, .10),
+                    transparent 42%
+                ),
+                var(--fondo);
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: rgba(23, 19, 36, .97);
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo-icon {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            box-shadow: 0 0 25px #e879f935;
+            color: white;
+            font-size: 24px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: -.5px;
+        }
+
+        .logo h1 span {
+            color: var(--rosado);
+        }
+
+        .logo small {
+            display: block;
+            margin-top: 5px;
+            color: var(--secundario);
+            font-size: 12px;
+        }
+
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #f0dcfa;
+            text-decoration: none;
+            border: 1px solid #735184;
+            padding: 12px 17px;
+            border-radius: 11px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .volver:hover {
+            background: rgba(168, 85, 247, .18);
+            border-color: var(--rosado);
+            color: white;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 22px;
+        }
+
+        /* PORTADA */
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 32px;
+            margin-bottom: 28px;
+            border-radius: 22px;
+            border: 1px solid #69427e;
+            background: linear-gradient(
+                120deg,
+                #35204f,
+                #21192f
+            );
+            box-shadow: 0 12px 35px #00000025;
+        }
+
+        .titulo-icono {
+            width: 78px;
+            height: 78px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 21px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            box-shadow: 0 8px 25px #a855f735;
+            color: white;
+            font-size: 34px;
+        }
+
+        .titulo h2 {
+            color: white;
+            font-size: 29px;
+            margin: 0 0 11px;
+        }
+
+        .titulo p {
+            color: #e2d0ec;
+            line-height: 1.7;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        /* BOTON PUBLICAR */
+        .publicar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            text-decoration: none;
+            padding: 14px 21px;
+            border-radius: 12px;
+            margin-bottom: 27px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+            box-shadow: 0 8px 23px #a855f725;
+        }
+
+        .publicar:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px #e879f930;
+        }
+
+        /* CUADRICULA DE SERVICIOS */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 280px), 1fr)
+            );
+            gap: 23px;
+        }
+
+        /* TARJETAS */
+        .tarjeta {
+            display: flex;
+            flex-direction: column;
+            background: rgba(33, 25, 47, .97);
+            padding: 27px;
+            border-radius: 19px;
+            border: 1px solid var(--borde);
+            border-top: 3px solid var(--morado);
+            box-shadow: 0 10px 30px #00000020;
+            transition: .3s;
+            min-width: 0;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            border-color: #86519c;
+            border-top-color: var(--rosado);
+            box-shadow: 0 15px 35px #a855f725;
+        }
+
+        .icono {
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(168, 85, 247, .14);
+            border: 1px solid rgba(232, 121, 249, .3);
+            color: var(--rosado);
+            border-radius: 15px;
+            font-size: 25px;
+            margin-bottom: 19px;
+        }
+
+        .tarjeta h3 {
+            color: var(--rosado-claro);
+            margin: 0 0 15px;
+            font-size: 21px;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta p {
+            color: var(--secundario);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0 0 15px;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta p strong {
+            color: var(--texto);
+        }
+
+        .tarjeta p i {
+            color: var(--rosado);
+            margin-right: 7px;
+        }
+
+        .descripcion-servicio {
+            flex-grow: 1;
+            white-space: pre-line;
+        }
+
+        /* PRECIO */
+        .precio {
+            color: var(--rosado-claro);
+            font-size: 23px;
+            font-weight: bold;
+            margin: 17px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--borde);
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .precio i {
+            color: var(--rosado);
+            font-size: 20px;
+            margin-right: 6px;
+        }
+
+        /* ACCIONES */
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .acciones form {
+            display: flex;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .boton:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .eliminar {
+            background: rgba(244, 63, 94, .12);
+            color: #fda4af;
+            border: 1px solid rgba(244, 63, 94, .45);
+        }
+
+        .eliminar:hover {
+            background: #b83d61;
+            color: white;
+        }
+
+        /* MENSAJES DE FLASK */
+        .mensaje {
+            background: rgba(168, 85, 247, .13);
+            color: #f3d6ff;
+            padding: 15px 18px;
+            border: 1px solid #e879f955;
+            border-radius: 12px;
+            margin-bottom: 23px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .mensaje i {
+            color: var(--rosado);
+            margin-right: 8px;
+        }
+
+        /* SIN SERVICIOS */
+        .vacio {
+            background: rgba(33, 25, 47, .97);
+            padding: 50px 25px;
+            text-align: center;
+            border: 1px solid var(--borde);
+            border-radius: 20px;
+            box-shadow: 0 12px 35px #00000020;
+        }
+
+        .vacio > i {
+            display: block;
+            color: var(--rosado);
+            font-size: 58px;
+            margin-bottom: 20px;
+        }
+
+        .vacio h3 {
+            color: white;
+            font-size: 23px;
+            margin-bottom: 14px;
+        }
+
+        .vacio p {
+            color: var(--secundario);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            color: #a99ab9;
+            font-size: 13px;
+            margin-top: 45px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header {
+                padding: 17px 5%;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .volver {
+                width: 100%;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 14px;
+            }
+
+            .titulo {
+                flex-direction: column;
+                text-align: center;
+                padding: 27px 20px;
+            }
+
+            .titulo-icono {
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+            }
+
+            .titulo h2 {
+                font-size: 25px;
+            }
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta {
+                padding: 22px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tarjeta,
+            .boton,
+            .publicar,
+            .volver {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="bi bi-tree-fill"></i>
+            </div>
+
+            <div>
+                <h1>
+                    Conecta <span>Corredor</span>
+                </h1>
+                <small>Conectando oportunidades</small>
+            </div>
+
+        </div>
+
+        <a class="volver" href="{{ url_for('dashboard') }}">
+            <i class="bi bi-arrow-left"></i>
+            Volver al panel
+        </a>
+    </header>
+
+    <main>
+
+        <!-- MENSAJES ORIGINALES -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="mensaje">
+                        <i class="bi bi-info-circle-fill"></i>
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- PORTADA -->
+        <section class="titulo">
+
+            <div class="titulo-icono">
+                <i class="bi bi-tools"></i>
+            </div>
+
+            <div>
+                <h2>Mis servicios y emprendimientos</h2>
+
+                <p>
+                    Aquí puedes consultar y administrar los servicios
+                    que has publicado para ofrecer a los habitantes
+                    del Corredor Ecológico.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- PUBLICAR SERVICIO -->
+        <a class="publicar" href="{{ url_for('publicar_servicio') }}">
+            <i class="bi bi-plus-circle-fill"></i>
+            Publicar servicio o emprendimiento
+        </a>
+
+        <!-- LISTADO ORIGINAL -->
+        {% if servicios %}
+
+            <section class="tarjetas">
+
+                {% for servicio in servicios %}
+
+                    <article class="tarjeta">
+
+                        <div class="icono">
+                            <i class="bi bi-tools"></i>
+                        </div>
+
+                        <h3>{{ servicio.nombre_servicio }}</h3>
+
+                        <p>
+                            <i class="bi bi-tag-fill"></i>
+                            <strong>Categoría:</strong>
+                            {{ servicio.categoria or 'Sin categoría' }}
+                        </p>
+
+                        <p class="descripcion-servicio">
+                            {{ servicio.descripcion }}
+                        </p>
+
+                        <p>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            {{ servicio.ubicacion }}
+                        </p>
+
+                        <!-- PRECIO ORIGINAL -->
+                        <div class="precio">
+                            <i class="bi bi-cash-coin"></i>
+
+                            {% if servicio.precio %}
+                                ${{ "{:,.0f}".format(servicio.precio) }}
+                            {% else %}
+                                Precio por consultar
+                            {% endif %}
+                        </div>
+
+                        <!-- ACCIONES ORIGINALES -->
+                        <div class="acciones">
+
+                            <a class="boton"
+                               href="{{ url_for('editar_servicio', id_servicio=servicio.id_servicio) }}">
+                                <i class="bi bi-pencil-square"></i>
+                                Editar
+                            </a>
+
+                            <form method="POST"
+                                  action="{{ url_for('eliminar_servicio', id_servicio=servicio.id_servicio) }}"
+                                  onsubmit="return confirm('¿Estás seguro de eliminar este servicio?');">
+
+                                <button type="submit" class="boton eliminar">
+                                    <i class="bi bi-trash3-fill"></i>
+                                    Eliminar
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+        {% else %}
+
+            <!-- SIN SERVICIOS -->
+            <div class="vacio">
+
+                <i class="bi bi-inbox"></i>
+
+                <h3>Aún no has publicado servicios</h3>
+
+                <p>
+                    Comparte tus habilidades y ofrece tus servicios
+                    a las personas de tu comunidad.
+                </p>
+
+                <a class="publicar"
+                   href="{{ url_for('publicar_servicio') }}">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Publicar mi primer servicio
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        <p>
+            © 2026 Conecta Corredor |
+            Conectando oportunidades y comunidad 🌿
+        </p>
+    </footer>
+
+</body>
+</html>

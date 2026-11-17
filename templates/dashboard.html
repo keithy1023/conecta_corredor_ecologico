@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel | Conecta Corredor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f6f2;
+            color: #263c30;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #26734d;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 10px #00000015;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        .logo-icon {
+            font-size: 27px;
+        }
+
+        .cerrar {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ffffff80;
+            padding: 10px 17px;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .cerrar:hover {
+            background: white;
+            color: #26734d;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 22px;
+        }
+
+        /* BIENVENIDA */
+        .bienvenida {
+            background: linear-gradient(120deg, #26734d, #46966b);
+            color: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px #26734d25;
+        }
+
+        .bienvenida h2 {
+            font-size: 28px;
+            margin: 0 0 12px;
+        }
+
+        .bienvenida p {
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #ffffff25;
+            border: 1px solid #ffffff70;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-transform: capitalize;
+        }
+
+        /* TITULO DE SECCION */
+        .titulo-seccion {
+            margin: 35px 0 20px;
+        }
+
+        .titulo-seccion h2 {
+            color: #26734d;
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .titulo-seccion p {
+            color: #718078;
+            margin: 0;
+        }
+
+        /* TARJETAS */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 25px;
+            border-radius: 13px;
+            border: 1px solid #e1ebe3;
+            box-shadow: 0 3px 12px #00000009;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px #00000012;
+        }
+
+        .icono {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e3f3e7;
+            border-radius: 12px;
+            font-size: 23px;
+            margin-bottom: 17px;
+        }
+
+        .tarjeta h3 {
+            color: #26734d;
+            margin: 0 0 12px;
+            font-size: 18px;
+        }
+
+        .tarjeta p {
+            color: #718078;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* BOTONES */
+        .boton {
+            display: inline-block;
+            background: #26734d;
+            color: white;
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 7px;
+            margin-top: 12px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #1b5739;
+        }
+
+        /* NUMEROS */
+        .numero {
+            font-size: 35px;
+            font-weight: bold;
+            color: #26734d;
+            margin: 12px 0 0;
+        }
+
+        .mensaje {
+            background: #e3f3e7;
+            color: #26734d;
+            padding: 13px 17px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718078;
+            font-size: 13px;
+            margin-top: 45px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header {
+                padding: 17px 5%;
+            }
+
+            .logo h1 {
+                font-size: 19px;
+            }
+
+            main {
+                margin: 25px auto;
+            }
+
+            .bienvenida {
+                padding: 25px 20px;
+            }
+
+            .bienvenida h2 {
+                font-size: 23px;
+            }
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+        }
+
+/* ========================================
+   CONECTA CORREDOR
+   DISEÑO MODERNO ROSADO Y AZUL CLARO
+   ======================================== */
+
+:root {
+    --rosado: #fbcfe8;
+    --rosado-fuerte: #db579b;
+    --rosado-fondo: #fdf2f8;
+    --azul: #bfdbfe;
+    --azul-fuerte: #2563eb;
+    --azul-fondo: #eff6ff;
+    --texto: #334155;
+    --gris: #64748b;
+}
+
+/* FONDO GENERAL */
+body {
+    background: linear-gradient(
+        135deg,
+        #fdf2f8 0%,
+        #faf7ff 50%,
+        #eff6ff 100%
+    );
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+header {
+    background: linear-gradient(
+        110deg,
+        #f9a8d4,
+        #c4b5fd,
+        #93c5fd
+    );
+    padding: 22px 7%;
+    box-shadow: 0 5px 22px #a78bfa25;
+}
+
+.logo h1 {
+    font-size: 25px;
+    font-weight: 800;
+    color: #243b65;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+/* CERRAR SESION */
+.cerrar {
+    background: #ffffff90;
+    color: #334155;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cerrar:hover {
+    background: white;
+    color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* BIENVENIDA */
+.bienvenida {
+    background: linear-gradient(
+        120deg,
+        #fbcfe8,
+        #e9d5ff,
+        #bfdbfe
+    );
+    color: #273b60;
+    padding: 42px;
+    border-radius: 24px;
+    border: 1px solid #ffffff;
+    box-shadow: 0 10px 30px #a78bfa20;
+    position: relative;
+    overflow: hidden;
+}
+
+.bienvenida::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ffffff30;
+    border-radius: 50%;
+    top: -90px;
+    right: -45px;
+    pointer-events: none;
+}
+
+.bienvenida h2 {
+    font-size: 32px;
+    color: #273b60;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.bienvenida p {
+    color: #475569;
+    line-height: 1.8;
+    font-size: 15px;
+    position: relative;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #ffffff90;
+    color: #a73579;
+    border: 1px solid #ffffff;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* TITULOS DE SECCION */
+.titulo-seccion {
+    margin: 40px 0 24px;
+}
+
+.titulo-seccion h2 {
+    color: #273b60;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.titulo-seccion p {
+    color: var(--gris);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    );
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* TARJETAS MODERNAS */
+.tarjeta {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 22px;
+    border: 1px solid #f1e5f4;
+    box-shadow: 0 6px 22px #a78bfa12;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px #a78bfa28;
+}
+
+/* ICONOS */
+.icono {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        #fce7f3,
+        #dbeafe
+    );
+    border-radius: 18px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* TITULOS DE TARJETAS */
+.tarjeta h3 {
+    color: #273b60;
+    font-size: 20px;
+    margin: 0 0 13px;
+    line-height: 1.4;
+}
+
+/* DESCRIPCIONES */
+.tarjeta p {
+    color: var(--gris);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* BOTONES */
+.boton {
+    display: inline-block;
+    background: linear-gradient(
+        110deg,
+        #60a5fa,
+        #3b82f6
+    );
+    color: white;
+    text-decoration: none;
+    padding: 13px 18px;
+    border-radius: 12px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+    max-width: 100%;
+}
+
+.boton:hover {
+    background: linear-gradient(
+        110deg,
+        #3b82f6,
+        #2563eb
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px #3b82f640;
+}
+
+/* SEGUNDO BOTON DE CADA TARJETA */
+.tarjeta .boton:nth-of-type(even) {
+    background: linear-gradient(
+        110deg,
+        #f9a8d4,
+        #f472b6
+    );
+    color: #713354;
+}
+
+.tarjeta .boton:nth-of-type(even):hover {
+    background: linear-gradient(
+        110deg,
+        #f472b6,
+        #ec4899
+    );
+    color: white;
+}
+
+/* NUMEROS Y ESTADISTICAS */
+.numero {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--azul-fuerte);
+    margin: 15px 0 5px;
+}
+
+/* MENSAJES */
+.mensaje {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #60a5fa;
+    margin-bottom: 24px;
+    box-shadow: 0 3px 12px #3b82f610;
+}
+
+/* BOTON DE DATOS DE CONTACTO */
+/* Conserva su enlace y comportamiento */
+main > div[style*="margin"] > a[href] {
+    background: linear-gradient(
+        110deg,
+        #f9a8d4,
+        #93c5fd
+    ) !important;
+    color: #273b60 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 18px #a78bfa20;
+    transition: 0.3s;
+}
+
+main > div[style*="margin"] > a[href]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px #a78bfa35;
+}
+
+/* PIE DE PAGINA */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gris);
+    font-size: 13px;
+    margin-top: 50px;
+    border-top: 1px solid #eadff0;
+}
+
+/* ADAPTACION A CELULARES */
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .bienvenida {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .bienvenida h2 {
+        font-size: 24px;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 22px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .tarjeta {
+        padding: 24px;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .boton,
+    .cerrar {
+        transition: none;
+    }
+}
+
+/* ==========================================
+   CONECTA CORREDOR
+   DARK PURPLE & PINK
+   ========================================== */
+
+:root {
+    color-scheme: dark;
+
+    --fondo: #110f1d;
+    --fondo-secundario: #171324;
+    --tarjeta: #21192f;
+    --tarjeta-hover: #2a203c;
+
+    --morado: #a855f7;
+    --morado-claro: #c084fc;
+    --rosado: #e879f9;
+    --rosado-claro: #f0abfc;
+
+    --texto: #f8f5ff;
+    --texto-secundario: #c4b5d6;
+    --borde: #40304f;
+}
+
+/* FONDO GENERAL */
+body {
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+header {
+    background: #171324;
+    color: var(--texto);
+    border-bottom: 1px solid var(--borde);
+    padding: 22px 7%;
+    box-shadow: 0 5px 25px #00000030;
+}
+
+.logo h1 {
+    color: #f8f5ff;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+/* CERRAR SESION */
+.cerrar {
+    color: #f0abfc;
+    background: #a855f718;
+    border: 1px solid #a855f755;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cerrar:hover {
+    background: #a855f7;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* BIENVENIDA */
+.bienvenida {
+    background: linear-gradient(
+        120deg,
+        #332044,
+        #1c2344
+    );
+    color: #f8f5ff;
+    padding: 42px;
+    border-radius: 24px;
+    border: 1px solid #513663;
+    box-shadow: 0 10px 35px #00000025;
+    position: relative;
+    overflow: hidden;
+}
+
+.bienvenida::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #e879f912;
+    top: -100px;
+    right: -50px;
+    pointer-events: none;
+}
+
+.bienvenida h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin: 0 0 15px;
+    position: relative;
+}
+
+.bienvenida p {
+    color: #ded2eb;
+    font-size: 15px;
+    line-height: 1.8;
+    position: relative;
+}
+
+/* ETIQUETA DE PERFIL */
+.etiqueta {
+    background: #e879f920;
+    color: #f0abfc;
+    border: 1px solid #e879f955;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* TITULOS DE SECCION */
+.titulo-seccion {
+    margin: 42px 0 24px;
+}
+
+.titulo-seccion h2 {
+    color: #f5e8ff;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.titulo-seccion p {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    );
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* TARJETAS */
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 6px 25px #00000020;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        border-color 0.3s;
+    min-width: 0;
+}
+
+.tarjeta:hover {
+    background: var(--tarjeta-hover);
+    border-color: #a855f780;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px #a855f720;
+}
+
+/* ICONOS */
+.icono {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        #4a275d,
+        #30264e
+    );
+    border: 1px solid #684078;
+    border-radius: 18px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* TITULOS DE TARJETAS */
+.tarjeta h3 {
+    color: #f5e8ff;
+    font-size: 20px;
+    margin: 0 0 13px;
+    line-height: 1.4;
+}
+
+/* DESCRIPCIONES */
+.tarjeta p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* BOTONES */
+.boton {
+    display: inline-block;
+    background: #a855f7;
+    color: white;
+    text-decoration: none;
+    padding: 13px 18px;
+    border-radius: 12px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+    max-width: 100%;
+}
+
+.boton:hover {
+    background: #9333ea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px #a855f740;
+}
+
+/* BOTONES ALTERNOS */
+.tarjeta .boton:nth-of-type(even) {
+    background: #783c94;
+    color: #ffffff;
+}
+
+.tarjeta .boton:nth-of-type(even):hover {
+    background: #9949b7;
+}
+
+/* NUMEROS Y ESTADISTICAS */
+.numero {
+    color: #f0abfc;
+    font-size: 38px;
+    font-weight: 800;
+    margin: 15px 0 5px;
+}
+
+/* MENSAJES DE FLASK */
+.mensaje {
+    background: #302040;
+    color: #f0abfc;
+    border: 1px solid #684078;
+    border-left: 4px solid #e879f9;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* BOTON MIS DATOS DE CONTACTO */
+/* SOLO CAMBIA LA APARIENCIA */
+main > div[style*="margin"] > a[href] {
+    background: #a855f7 !important;
+    color: white !important;
+    border: 1px solid #c084fc !important;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 18px #a855f725;
+    transition: 0.3s;
+}
+
+main > div[style*="margin"] > a[href]:hover {
+    background: #9333ea !important;
+    transform: translateY(-2px);
+}
+
+/* PIE DE PAGINA */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #a99ab9;
+    font-size: 13px;
+    margin-top: 50px;
+    border-top: 1px solid #352442;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .bienvenida {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .bienvenida h2 {
+        font-size: 24px;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 22px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .tarjeta {
+        padding: 24px;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .boton,
+    .cerrar {
+        transition: none;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            <h1>Conecta Corredor</h1>
+        </div>
+
+        <a class="cerrar" href="{{ url_for('cerrar_sesion') }}">
+            Cerrar sesión
+        </a>
+    </header>
+
+    <main>
+
+        <!-- MENSAJES -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="mensaje">
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- BIENVENIDA -->
+        <section class="bienvenida">
+
+            <h2>¡Hola, {{ nombre }}! 👋</h2>
+
+            {% if tipo_usuario == 'empleador' %}
+                <p>
+                    Administra tu negocio y crea nuevas oportunidades
+                    laborales para tu comunidad.
+                </p>
+            {% else %}
+                <p>
+                    Explora las oportunidades, servicios y beneficios
+                    que tenemos para tu comunidad.
+                </p>
+            {% endif %}
+
+            <p>
+                Mi perfil:
+                <span class="etiqueta">{{ tipo_usuario }}</span>
+            </p>
+
+        </section>
+
+        <!-- PANEL EMPLEADOR -->
+        {% if tipo_usuario == 'empleador' %}
+
+            <section class="titulo-seccion">
+                <h2>Panel de empleador</h2>
+                <p>Gestiona tus oportunidades laborales y tu negocio.</p>
+            </section>
+
+            <section class="tarjetas">
+
+                <article class="tarjeta">
+                    <div class="icono">💼</div>
+
+                    <h3>Publicar empleo</h3>
+
+                    <p>
+                        Comparte nuevas vacantes y encuentra personas
+                        interesadas en trabajar contigo.
+                    </p>
+
+                    <a class="boton" href="{{ url_for('publicar_empleo') }}">
+                        + Publicar oferta
+                    </a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">📋</div>
+
+                    <h3>Mis ofertas</h3>
+
+                    <p>
+                        Consulta y administra todas las ofertas
+                        laborales que has publicado.
+                    </p>
+
+                    <div class="numero">{{ total_empleos }}</div>
+
+                    <p>Ofertas registradas</p>
+
+                    <a class="boton" href="{{ url_for('mis_empleos') }}">
+                        Administrar ofertas
+                    </a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">👥</div>
+
+                    <h3>Postulantes</h3>
+
+                    <a href="{{ url_for('mis_postulantes') }}" class="boton">
+    👥 Ver postulantes
+</a>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="icono">🏪</div>
+
+                    <h3>Mi negocio</h3>
+
+                    <p>
+                        Próximamente podrás completar la información
+                        y los datos de contacto de tu negocio.
+                    </p>
+                </article>
+
+            </section>
+
+        <!-- PANEL HABITANTE -->
+        {% else %}
+
+            <section class="titulo-seccion">
+                <h2>Panel de habitante</h2>
+                <p>Encuentra oportunidades y descubre los servicios de tu comunidad.</p>
+            </section>
+
+            <section class="tarjetas">
+
+                <article class="tarjeta">
+                    <div class="icono">🔎</div>
+
+                    <h3>Buscar empleos</h3>
+
+                    <p>
+                        Descubre ofertas laborales disponibles
+                        cerca de tu comunidad.
+                    </p>
+
+                    <a class="boton"
+                       href="{{ url_for('empleos_disponibles') }}">
+                        🔎 Ver empleos disponibles
+                    </a>
+
+                    <!-- NUEVO BOTÓN: MIS POSTULACIONES -->
+                    <a class="boton"
+                       href="{{ url_for('mis_postulaciones') }}">
+                        📋 Mis postulaciones
+                    </a>
+
+                </article>
+
+                
+<article class="tarjeta">
+    <div class="icono">🛠️</div>
+
+    <h3>Servicios y emprendimientos</h3>
+
+    <p>
+        Descubre los productos, servicios y emprendimientos
+        de los habitantes del Corredor Ecológico de Villavicencio.
+    </p>
+<a class="boton"
+   href="{{ url_for('servicios_disponibles') }}">
+    🛍️ Explorar servicios
+</a>
+
+
+<a class="boton"
+   href="{{ url_for('publicar_servicio') }}">
+    ➕ Publicar mi emprendimiento
+</a>
+
+<a class="boton"
+   href="{{ url_for('mis_servicios') }}">
+    🛠️ Mis servicios (Editar y eliminar)
+</a>
+
+</article>
+
+</article>
+                <article class="tarjeta">
+                    <div class="icono">📄</div>
+
+                    <h3>Mi hoja de vida</h3>
+
+                        <a class="boton" href="{{ url_for('mi_hoja_de_vida') }}">
+        📄 Crear o editar mi hoja de vida
+    </a>
+                </article>
+
+            </section>
+
+        {% endif %}
+
+<div style="margin: 25px 0;">
+    <a href="{{ url_for('mis_datos_contacto') }}"
+       style="
+           display: inline-block;
+           background: #2476aa;
+           color: white;
+           padding: 13px 20px;
+           border-radius: 9px;
+           text-decoration: none;
+           font-weight: bold;
+       ">
+        📱 Mis datos de contacto
+    </a>
+</div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Conecta Corredor | Conectando oportunidades y comunidad 🌿</p>
+    </footer>
+
+</body>
+</html>

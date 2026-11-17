@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión | Conecta Corredor</title>
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            color: var(--texto);
+            background:
+                radial-gradient(
+                    ellipse at 50% 25%,
+                    #4e245e 0%,
+                    transparent 55%
+                ),
+                linear-gradient(
+                    180deg,
+                    #130d25 0%,
+                    #25143d 60%,
+                    #110f1d 100%
+                );
+        }
+
+        /* ESTRELLAS */
+        .estrellas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(2px 2px at 10% 15%, #fff, transparent),
+                radial-gradient(2px 2px at 25% 8%, #f0abfc, transparent),
+                radial-gradient(2px 2px at 45% 20%, #fff, transparent),
+                radial-gradient(2px 2px at 70% 10%, #f0abfc, transparent),
+                radial-gradient(2px 2px at 90% 25%, #fff, transparent),
+                radial-gradient(2px 2px at 80% 40%, #fff, transparent),
+                radial-gradient(2px 2px at 15% 45%, #e879f9, transparent),
+                radial-gradient(2px 2px at 55% 5%, #fff, transparent);
+            opacity: .7;
+        }
+
+        /* PAISAJE DE FONDO */
+        .paisaje {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .paisaje svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* TARJETA DEL LOGIN */
+        .contenedor {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 440px;
+            margin: auto;
+            padding: 42px 36px;
+
+            background: linear-gradient(
+                145deg,
+                rgba(33, 25, 47, .94),
+                rgba(26, 18, 42, .91)
+            );
+
+            border: 1px solid rgba(232, 121, 249, .55);
+            border-radius: 26px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, .45),
+                0 0 45px rgba(168, 85, 247, .16),
+                inset 0 1px 0 rgba(255, 255, 255, .08);
+
+            backdrop-filter: blur(18px);
+            animation: aparecer .8s ease both;
+        }
+
+        .icono {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 22px;
+            font-size: 38px;
+            background: linear-gradient(
+                135deg,
+                #64318b,
+                #b13fb0
+            );
+            box-shadow: 0 0 28px #e879f944;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            font-size: 29px;
+            margin: 0 0 9px;
+            letter-spacing: -.6px;
+        }
+
+        .subtitulo {
+            color: var(--secundario);
+            text-align: center;
+            line-height: 1.6;
+            font-size: 15px;
+            margin: 0 0 24px;
+        }
+
+        .decoracion {
+            width: 90px;
+            height: 4px;
+            margin: 0 auto 28px;
+            border-radius: 20px;
+            background: linear-gradient(
+                90deg,
+                #a855f7,
+                #e879f9
+            );
+            box-shadow: 0 0 15px #e879f955;
+        }
+
+        /* MENSAJES DE FLASK */
+        .mensaje {
+            color: #f9dcff;
+            text-align: center;
+            background: rgba(168, 85, 247, .15);
+            border: 1px solid #a855f777;
+            border-radius: 11px;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        label {
+            display: block;
+            margin-top: 19px;
+            margin-bottom: 8px;
+            color: #f0dcfa;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 16px;
+            background: #171324;
+            color: #f8f5ff;
+            border: 1px solid #58416c;
+            border-radius: 12px;
+            outline: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        input::placeholder {
+            color: #9586a7;
+        }
+
+        input:focus {
+            border-color: var(--rosado);
+            box-shadow: 0 0 0 3px #e879f922;
+            background: #20172f;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 29px;
+            padding: 16px;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: .3s;
+            box-shadow: 0 8px 25px #a855f735;
+        }
+
+        button:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px #e879f955;
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .enlaces {
+            margin-top: 26px;
+            text-align: center;
+        }
+
+        .enlaces p {
+            color: var(--secundario);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--rosado-claro);
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            .contenedor {
+                padding: 35px 23px;
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .icono {
+                width: 62px;
+                height: 62px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contenedor {
+                animation: none;
+            }
+
+            button,
+            input,
+            a {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="estrellas" aria-hidden="true"></div>
+
+    <!-- PAISAJE NATURE NIGHT -->
+    <div class="paisaje" aria-hidden="true">
+        <svg viewBox="0 0 1440 900"
+             preserveAspectRatio="xMidYMid slice"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+                <radialGradient id="brilloLuna">
+                    <stop offset="0%" stop-color="#e879f9"
+                          stop-opacity=".45"/>
+                    <stop offset="100%" stop-color="#e879f9"
+                          stop-opacity="0"/>
+                </radialGradient>
+
+                <linearGradient id="luna" x1="0" y1="0"
+                                x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f4b5fc"/>
+                    <stop offset="100%" stop-color="#b34ab7"/>
+                </linearGradient>
+
+                <linearGradient id="montanas" x1="0" y1="0"
+                                x2="0" y2="1">
+                    <stop offset="0%" stop-color="#50316f"/>
+                    <stop offset="100%" stop-color="#221633"/>
+                </linearGradient>
+            </defs>
+
+            <!-- LUNA ROSADA -->
+            <circle cx="1060" cy="215" r="220"
+                    fill="url(#brilloLuna)"/>
+
+            <circle cx="1060" cy="215" r="105"
+                    fill="url(#luna)" opacity=".9"/>
+
+            <!-- MONTAÑAS LEJANAS -->
+            <path
+                d="M0 575
+                   L180 340 L330 510
+                   L560 280 L780 535
+                   L1010 355 L1220 520
+                   L1440 300 L1440 900 L0 900Z"
+                fill="#49316d"/>
+
+            <path
+                d="M0 660
+                   L230 430 L420 590
+                   L700 360 L950 600
+                   L1180 410 L1440 610
+                   L1440 900 L0 900Z"
+                fill="url(#montanas)"/>
+
+            <!-- COLINAS -->
+            <path
+                d="M0 710
+                   Q280 570 600 690
+                   Q970 540 1440 690
+                   L1440 900 L0 900Z"
+                fill="#241938"/>
+
+            <path
+                d="M0 785
+                   Q320 650 720 760
+                   Q1100 660 1440 760
+                   L1440 900 L0 900Z"
+                fill="#1b142b"/>
+
+            <!-- BOSQUE IZQUIERDO -->
+            <g fill="#170f26">
+                <path d="M40 900 V580
+                         L-25 700 L40 660
+                         L105 700 L40 580Z"/>
+
+                <path d="M145 900 V530
+                         L55 685 L145 630
+                         L235 685 L145 530Z"/>
+
+                <path d="M270 900 V635
+                         L205 740 L270 700
+                         L335 740 L270 635Z"/>
+
+                <path d="M365 900 V700
+                         L310 790 L365 755
+                         L420 790 L365 700Z"/>
+            </g>
+
+            <!-- BOSQUE DERECHO -->
+            <g fill="#170f26">
+                <path d="M1190 900 V615
+                         L1120 735 L1190 690
+                         L1260 735 L1190 615Z"/>
+
+                <path d="M1310 900 V520
+                         L1210 690 L1310 630
+                         L1410 690 L1310 520Z"/>
+
+                <path d="M1430 900 V580
+                         L1360 715 L1430 670
+                         L1500 715 L1430 580Z"/>
+
+                <path d="M1080 900 V720
+                         L1020 805 L1080 770
+                         L1140 805 L1080 720Z"/>
+            </g>
+
+            <!-- BRILLOS EN EL SUELO -->
+            <path
+                d="M0 835 Q400 790 720 850
+                   T1440 825"
+                stroke="#e879f9"
+                stroke-width="2"
+                fill="none"
+                opacity=".16"/>
+        </svg>
+    </div>
+
+    <!-- FORMULARIO ORIGINAL CON NUEVO DISEÑO -->
+    <div class="contenedor">
+
+        <div class="icono">🌿</div>
+
+        <h1>Conecta Corredor</h1>
+
+        <p class="subtitulo">
+            Ingresa a tu cuenta para continuar.
+        </p>
+
+        <div class="decoracion"></div>
+
+        <!-- MENSAJES ORIGINALES DE FLASK -->
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <p class="mensaje">{{ mensaje }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- FORMULARIO ORIGINAL -->
+        <form method="POST">
+
+            <label for="correo">
+                Correo electrónico
+            </label>
+
+            <input
+                id="correo"
+                type="email"
+                name="correo"
+                placeholder="correo@ejemplo.com"
+                autocomplete="email"
+                required
+            >
+
+            <label for="contrasena">
+                Contraseña
+            </label>
+
+            <input
+                id="contrasena"
+                type="password"
+                name="contrasena"
+                placeholder="Ingresa tu contraseña"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit">
+                Iniciar sesión
+            </button>
+
+        </form>
+
+        <!-- ENLACES ORIGINALES -->
+        <div class="enlaces">
+
+            <p>
+                ¿No tienes cuenta?
+                <a href="{{ url_for('registro') }}">
+                    Regístrate
+                </a>
+            </p>
+
+            <p>
+                <a href="{{ url_for('inicio') }}"
+                   class="volver">
+                    ← Volver al inicio
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

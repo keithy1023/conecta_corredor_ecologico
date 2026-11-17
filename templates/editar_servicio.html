@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar servicio | Conecta Corredor</title>
+
+    <style>
+/* ==========================================
+   CONECTA CORREDOR
+   EDITAR SERVICIO - DARK PURPLE & PINK
+   ========================================== */
+
+:root {
+    color-scheme: dark;
+
+    --fondo: #110f1d;
+    --fondo-secundario: #171324;
+    --tarjeta: #21192f;
+    --campo: #171324;
+
+    --morado: #a855f7;
+    --morado-hover: #9333ea;
+    --rosado: #e879f9;
+    --rosado-claro: #f0abfc;
+
+    --texto: #f8f5ff;
+    --texto-secundario: #c4b5d6;
+    --borde: #40304f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* FONDO GENERAL */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+/* ENCABEZADO */
+header {
+    background: #171324;
+    color: var(--texto);
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid var(--borde);
+    box-shadow: 0 5px 25px #00000030;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo h1 {
+    margin: 0;
+    color: #f8f5ff;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+/* VOLVER */
+.volver {
+    color: #f0abfc;
+    background: #a855f718;
+    text-decoration: none;
+    border: 1px solid #a855f755;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.volver:hover {
+    background: var(--morado);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* TARJETA PRINCIPAL */
+.contenedor {
+    background: var(--tarjeta);
+    padding: 42px;
+    border-radius: 24px;
+    border: 1px solid var(--borde);
+    box-shadow: 0 10px 35px #00000025;
+}
+
+/* TITULO */
+.titulo {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.titulo h2 {
+    color: #f5e8ff;
+    font-size: 28px;
+    margin: 0 0 14px;
+    line-height: 1.4;
+}
+
+.titulo p {
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* GRUPOS */
+.grupo {
+    margin-bottom: 24px;
+}
+
+/* ETIQUETAS */
+label {
+    display: block;
+    color: #eee5f7;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* CAMPOS DEL FORMULARIO */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--campo);
+    color: var(--texto);
+    border: 1px solid #4c385e;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s,
+        background 0.3s;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #8653a5;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    background: #1d172c;
+    border-color: var(--rosado);
+    box-shadow: 0 0 0 4px #e879f920;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a99ab9;
+}
+
+/* SELECT DE CATEGORIAS */
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #21192f;
+    color: #f8f5ff;
+}
+
+/* DESCRIPCION */
+textarea {
+    resize: vertical;
+    min-height: 125px;
+    line-height: 1.7;
+}
+
+/* TEXTOS DE AYUDA */
+.ayuda {
+    color: #b8a9c9;
+    font-size: 12px;
+    margin-top: 9px;
+    line-height: 1.7;
+}
+
+/* ENLACE DE DATOS DE CONTACTO */
+/* SOBRESCRIBE SOLO EL COLOR EN LINEA */
+.grupo a[href] {
+    color: #f0abfc !important;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.grupo a[href]:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* BOTONES */
+.acciones {
+    display: flex;
+    gap: 14px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.boton {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+/* GUARDAR CAMBIOS */
+.guardar {
+    background: #a855f7;
+    color: white;
+    box-shadow: 0 4px 14px #a855f725;
+}
+
+.guardar:hover {
+    background: #9333ea;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px #a855f740;
+}
+
+/* CANCELAR */
+.cancelar {
+    background: #3a2749;
+    color: #f0abfc;
+    border: 1px solid #684078;
+}
+
+.cancelar:hover {
+    background: #50315e;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* MENSAJES DE FLASK */
+.mensaje {
+    background: #302040;
+    color: #f0abfc;
+    border: 1px solid #684078;
+    border-left: 4px solid #e879f9;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* PIE DE PAGINA */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #a99ab9;
+    font-size: 13px;
+    margin-top: 40px;
+    border-top: 1px solid #352442;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    main {
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .contenedor {
+        padding: 27px 20px;
+        border-radius: 18px;
+    }
+
+    .titulo h2 {
+        font-size: 23px;
+    }
+
+    .titulo p {
+        font-size: 14px;
+    }
+
+    .acciones {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .volver,
+    input,
+    select,
+    textarea,
+    .boton {
+        transition: none;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <span class="logo-icon">🌿</span>
+            <h1>Conecta Corredor</h1>
+        </div>
+
+        <a class="volver" href="{{ url_for('mis_servicios') }}">
+            Volver a mis servicios
+        </a>
+    </header>
+
+    <main>
+
+        <section class="contenedor">
+
+            <div class="titulo">
+                <h2>✏️ Editar servicio o emprendimiento</h2>
+
+                <p>
+                    Actualiza la información de tu publicación
+                    para mantener informada a la comunidad
+                    del Corredor Ecológico.
+                </p>
+            </div>
+
+            <!-- MENSAJES -->
+            {% with mensajes = get_flashed_messages() %}
+                {% if mensajes %}
+                    {% for mensaje in mensajes %}
+                        <div class="mensaje">
+                            {{ mensaje }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- FORMULARIO -->
+            <form method="POST"
+                  action="{{ url_for('editar_servicio',
+                                     id_servicio=servicio.id_servicio) }}">
+
+                <!-- NOMBRE -->
+                <div class="grupo">
+                    <label for="nombre">
+                        Nombre del servicio o emprendimiento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        value="{{ servicio.nombre_servicio }}"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+                <!-- CATEGORIA -->
+                <div class="grupo">
+                    <label for="id_categoria">Categoría</label>
+
+                    <select
+                        id="id_categoria"
+                        name="id_categoria"
+                        required
+                    >
+                        <option value="">
+                            Selecciona una categoría
+                        </option>
+
+                       
+{% for categoria in categorias %}
+    <option
+        value="{{ categoria.id_categoria }}"
+        {% if categoria.nombre == servicio.categoria %}
+            selected
+        {% endif %}
+    >
+        {{ categoria.nombre }}
+    </option>
+{% endfor %}
+
+
+                    </select>
+                </div>
+
+                <!-- DESCRIPCION -->
+                <div class="grupo">
+                    <label for="descripcion">Descripción</label>
+
+                    <textarea
+                        id="descripcion"
+                        name="descripcion"
+                        maxlength="200"
+                        required
+                    >{{ servicio.descripcion }}</textarea>
+                </div>
+
+                <!-- UBICACION -->
+                <div class="grupo">
+                    <label for="ubicacion">Ubicación</label>
+
+                    <input
+                        type="text"
+                        id="ubicacion"
+                        name="ubicacion"
+                        value="{{ servicio.ubicacion }}"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <!-- PRECIO -->
+                <div class="grupo">
+                    <label for="precio">
+                        Precio del producto o servicio
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precio"
+                        name="precio"
+                        value="{{ servicio.precio if servicio.precio is not none else '' }}"
+                        min="0"
+                        max="2147483647"
+                    >
+
+                    <p class="ayuda">
+                        Deja este campo vacío si el precio
+                        se acuerda directamente con el cliente.
+                    </p>
+                </div>
+
+                <!-- CONTACTO -->
+                <div class="grupo">
+                    <p class="ayuda">
+                        📱 Los datos de contacto se administran
+                        desde tu perfil y se compartirán únicamente
+                        si lo has autorizado.
+                    </p>
+
+                    <a href="{{ url_for('mis_datos_contacto') }}"
+                       style="color: #26734d; font-weight: bold;">
+                        Administrar mis datos de contacto
+                    </a>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="acciones">
+
+                    <button type="submit" class="boton guardar">
+                        💾 Guardar cambios
+                    </button>
+
+                    <a href="{{ url_for('mis_servicios') }}"
+                       class="boton cancelar">
+                        Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Conecta Corredor |
+        Conectando oportunidades y comunidad 🌿
+    </footer>
+
+</body>
+</html>

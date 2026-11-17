@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explorar servicios | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: var(--texto);
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 80%,
+                    rgba(232, 121, 249, .10),
+                    transparent 42%
+                ),
+                var(--fondo);
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: rgba(23, 19, 36, .97);
+            color: white;
+            padding: 19px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo-icon {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            box-shadow: 0 0 25px #e879f935;
+            color: white;
+            font-size: 24px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo h1 span {
+            color: var(--rosado);
+        }
+
+        .logo small {
+            display: block;
+            margin-top: 5px;
+            color: var(--secundario);
+            font-size: 12px;
+        }
+
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #f0dcfa;
+            text-decoration: none;
+            border: 1px solid #735184;
+            padding: 12px 17px;
+            border-radius: 11px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .volver:hover {
+            background: rgba(168, 85, 247, .18);
+            border-color: var(--rosado);
+            color: white;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 1200px;
+            margin: 38px auto;
+            padding: 0 22px;
+        }
+
+        /* SECCION DE BIENVENIDA */
+        .titulo {
+            background: linear-gradient(
+                120deg,
+                #35204f,
+                #21192f
+            );
+            border-radius: 22px;
+            padding: 42px;
+            margin-bottom: 35px;
+            border: 1px solid #69427e;
+            box-shadow: 0 12px 35px #00000025;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .titulo::before {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            background: rgba(168, 85, 247, .14);
+            border-radius: 50%;
+            top: -120px;
+            right: -55px;
+            pointer-events: none;
+        }
+
+        .titulo::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(232, 121, 249, .10);
+            border-radius: 50%;
+            bottom: -90px;
+            right: 160px;
+            pointer-events: none;
+        }
+
+        .etiqueta-superior {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(232, 121, 249, .12);
+            color: var(--rosado-claro);
+            border: 1px solid rgba(232, 121, 249, .35);
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .titulo h2 {
+            color: white;
+            font-size: 34px;
+            margin: 0 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .titulo h2 span {
+            color: var(--rosado);
+        }
+
+        .titulo p {
+            color: #e2d0ec;
+            line-height: 1.8;
+            max-width: 700px;
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        /* TITULO DEL LISTADO */
+        .encabezado-listado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .encabezado-listado h3 {
+            margin: 0;
+            font-size: 23px;
+            color: white;
+        }
+
+        .encabezado-listado h3 i {
+            color: var(--rosado);
+            margin-right: 8px;
+        }
+
+        .contador {
+            background: rgba(168, 85, 247, .13);
+            color: var(--rosado-claro);
+            border: 1px solid rgba(232, 121, 249, .30);
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* TARJETAS */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 270px), 1fr)
+            );
+            gap: 24px;
+        }
+
+        .tarjeta {
+            background: rgba(33, 25, 47, .97);
+            padding: 27px;
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+            border-top: 3px solid var(--morado);
+            box-shadow: 0 10px 30px #00000020;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-6px);
+            border-color: #86519c;
+            box-shadow: 0 15px 35px #a855f725;
+        }
+
+        .icono {
+            width: 61px;
+            height: 61px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            border-radius: 17px;
+            font-size: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 7px 22px #a855f730;
+        }
+
+        .categoria {
+            display: inline-block;
+            align-self: flex-start;
+            background: rgba(232, 121, 249, .12);
+            color: var(--rosado-claro);
+            border: 1px solid rgba(232, 121, 249, .30);
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta h3 {
+            color: white;
+            margin: 8px 0 13px;
+            font-size: 21px;
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta p {
+            color: var(--secundario);
+            font-size: 14px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .descripcion {
+            flex-grow: 1;
+            white-space: pre-wrap;
+        }
+
+        .ubicacion {
+            background: rgba(168, 85, 247, .08);
+            border: 1px solid rgba(168, 85, 247, .18);
+            padding: 12px 14px;
+            border-radius: 11px;
+            margin-top: 13px;
+        }
+
+        .ubicacion i {
+            color: var(--rosado);
+            margin-right: 7px;
+        }
+
+        /* PRECIO */
+        .precio {
+            color: var(--rosado-claro);
+            font-size: 24px;
+            font-weight: 800;
+            margin-top: 20px;
+            padding-top: 19px;
+            border-top: 1px solid var(--borde);
+            overflow-wrap: anywhere;
+        }
+
+        .precio i {
+            color: var(--rosado);
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        /* BOTON DE WHATSAPP */
+        .boton-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .boton-whatsapp:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px #e879f930;
+        }
+
+        .boton-whatsapp i {
+            font-size: 18px;
+        }
+
+        .sin-contacto {
+            margin-top: 20px;
+            padding: 13px;
+            background: rgba(168, 85, 247, .07);
+            border: 1px solid var(--borde);
+            border-radius: 11px;
+            text-align: center;
+            color: var(--secundario);
+            font-size: 13px;
+        }
+
+        .sin-contacto i {
+            margin-right: 7px;
+        }
+
+        /* MENSAJES DE FLASK */
+        .mensaje {
+            background: rgba(168, 85, 247, .13);
+            color: #f3d6ff;
+            border: 1px solid #e879f955;
+            border-left: 4px solid var(--morado);
+            padding: 15px 18px;
+            border-radius: 11px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .mensaje i {
+            color: var(--rosado);
+            margin-right: 8px;
+        }
+
+        /* SIN SERVICIOS */
+        .vacio {
+            background: rgba(33, 25, 47, .97);
+            padding: 55px 25px;
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+            box-shadow: 0 12px 35px #00000020;
+        }
+
+        .vacio-icono {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 22px;
+            background: rgba(168, 85, 247, .15);
+            border: 1px solid rgba(232, 121, 249, .3);
+            color: var(--rosado);
+            font-size: 37px;
+        }
+
+        .vacio h3 {
+            color: white;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .vacio p {
+            color: var(--secundario);
+            line-height: 1.7;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #a99ab9;
+            font-size: 13px;
+            margin-top: 45px;
+            border-top: 1px solid var(--borde);
+        }
+
+        /* CELULARES */
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .volver {
+                width: 100%;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 15px;
+            }
+
+            .titulo {
+                padding: 30px 23px;
+            }
+
+            .titulo h2 {
+                font-size: 26px;
+            }
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta {
+                padding: 23px;
+            }
+
+            .encabezado-listado h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tarjeta,
+            .boton-whatsapp,
+            .volver {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="bi bi-tree-fill"></i>
+            </div>
+
+            <div>
+                <h1>
+                    Conecta <span>Corredor</span>
+                </h1>
+                <small>Conectando oportunidades</small>
+            </div>
+
+        </div>
+
+        <a class="volver" href="{{ url_for('dashboard') }}">
+            <i class="bi bi-arrow-left"></i>
+            Volver al panel
+        </a>
+
+    </header>
+
+    <main>
+
+        <!-- MENSAJES DE FLASK -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+
+                    <div class="mensaje">
+                        <i class="bi bi-info-circle-fill"></i>
+                        {{ mensaje }}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- BIENVENIDA -->
+        <section class="titulo">
+
+            <span class="etiqueta-superior">
+                <i class="bi bi-stars"></i>
+                EMPRENDIMIENTOS DE NUESTRA COMUNIDAD
+            </span>
+
+            <h2>
+                Descubre servicios <span>cerca de ti</span> 💗
+            </h2>
+
+            <p>
+                Encuentra productos, negocios y servicios
+                ofrecidos por los habitantes del Corredor
+                Ecológico. Conecta con emprendedores,
+                descubre nuevas oportunidades y apoya
+                el talento de nuestra comunidad.
+            </p>
+
+        </section>
+
+        <!-- LISTADO DE SERVICIOS -->
+        {% if servicios %}
+
+            <div class="encabezado-listado">
+
+                <h3>
+                    <i class="bi bi-shop"></i>
+                    Explora los emprendimientos
+                </h3>
+
+                <span class="contador">
+                    {{ servicios|length }}
+                    servicios disponibles
+                </span>
+
+            </div>
+
+            <section class="tarjetas">
+
+                {% for servicio in servicios %}
+
+                    <article class="tarjeta">
+
+                        <!-- ICONO -->
+                        <div class="icono">
+                            <i class="bi bi-bag-heart-fill"></i>
+                        </div>
+
+                        <!-- CATEGORIA -->
+                        <span class="categoria">
+                            {{ servicio.categoria or 'Sin categoría' }}
+                        </span>
+
+                        <!-- NOMBRE DEL SERVICIO -->
+                        <h3>
+                            {{ servicio.nombre_servicio }}
+                        </h3>
+
+                        <!-- DESCRIPCION -->
+                        <p class="descripcion">{{ servicio.descripcion }}</p>
+
+                        <!-- UBICACION -->
+                        <p class="ubicacion">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            {{ servicio.ubicacion }}
+                        </p>
+
+                        <!-- PRECIO -->
+                        <div class="precio">
+
+                            {% if servicio.precio is not none %}
+
+                                <i class="bi bi-cash-coin"></i>
+                                ${{ "{:,.0f}".format(servicio.precio) }}
+
+                            {% else %}
+
+                                Precio por consultar
+
+                            {% endif %}
+
+                        </div>
+
+                        <!-- CONTACTO POR WHATSAPP -->
+                        {% if servicio.telefono_contacto %}
+
+                            <a
+                                href="https://wa.me/{{ servicio.telefono_contacto | replace('+', '') | replace(' ', '') | replace('-', '') }}?text={{ ('Hola, vi tu servicio de ' ~ servicio.nombre_servicio ~ ' en Conecta Corredor y me gustaría recibir más información.') | urlencode }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="boton-whatsapp"
+                            >
+                                <i class="bi bi-whatsapp"></i>
+                                Contactar por WhatsApp
+                            </a>
+
+                        {% else %}
+
+                            <div class="sin-contacto">
+                                <i class="bi bi-telephone-x"></i>
+                                Contacto no disponible
+                            </div>
+
+                        {% endif %}
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+        {% else %}
+
+            <!-- CUANDO NO HAY SERVICIOS -->
+            <div class="vacio">
+
+                <div class="vacio-icono">
+                    <i class="bi bi-shop-window"></i>
+                </div>
+
+                <h3>
+                    Todavía no hay servicios publicados
+                </h3>
+
+                <p>
+                    Próximamente encontrarás aquí los
+                    emprendimientos y servicios de nuestra comunidad.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        © 2026 Conecta Corredor |
+        Conectando oportunidades y comunidad 💜
+    </footer>
+
+</body>
+</html>

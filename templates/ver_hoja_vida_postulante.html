@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hoja de vida | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--texto);
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 80%,
+                    rgba(232, 121, 249, .10),
+                    transparent 42%
+                ),
+                var(--fondo);
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: rgba(23, 19, 36, .97);
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo-icono {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            border-radius: 15px;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 0 25px #e879f935;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header h1 span {
+            color: var(--rosado);
+        }
+
+        .marca small {
+            display: block;
+            margin-top: 5px;
+            color: var(--secundario);
+            font-size: 12px;
+        }
+
+        header a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #f0dcfa;
+            text-decoration: none;
+            border: 1px solid #735184;
+            padding: 12px 17px;
+            border-radius: 11px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        header a:hover {
+            background: rgba(168, 85, 247, .18);
+            border-color: var(--rosado);
+            color: white;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 850px;
+            margin: 42px auto;
+            padding: 0 20px;
+        }
+
+        /* HOJA DE VIDA */
+        .hoja {
+            background: rgba(33, 25, 47, .97);
+            padding: 38px;
+            border-radius: 22px;
+            box-shadow: 0 15px 45px #00000035;
+            border: 1px solid var(--borde);
+            border-top: 3px solid var(--morado);
+        }
+
+        /* PERFIL PRINCIPAL */
+        .perfil-encabezado {
+            text-align: center;
+            padding: 12px 0 30px;
+        }
+
+        .avatar {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            font-size: 42px;
+            box-shadow: 0 8px 28px #a855f735;
+        }
+
+        .nombre {
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            margin: 0 0 13px;
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+        }
+
+        .subtitulo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            text-align: center;
+            color: var(--rosado-claro);
+            background: rgba(232, 121, 249, .12);
+            border: 1px solid rgba(232, 121, 249, .30);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .separador {
+            width: 75px;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                #9333ea,
+                #e879f9
+            );
+            border-radius: 10px;
+            margin: 25px auto 0;
+        }
+
+        /* SECCIONES */
+        .seccion {
+            margin-top: 25px;
+            padding: 23px;
+            background: rgba(23, 19, 36, .75);
+            border: 1px solid var(--borde);
+            border-radius: 15px;
+            transition: border-color .3s, box-shadow .3s;
+        }
+
+        .seccion:hover {
+            border-color: #86519c;
+            box-shadow: 0 5px 20px #a855f712;
+        }
+
+        .seccion h3 {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--rosado-claro);
+            font-size: 18px;
+            margin: 0 0 16px;
+        }
+
+        .seccion h3 i {
+            width: 39px;
+            height: 39px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(168, 85, 247, .15);
+            border: 1px solid rgba(232, 121, 249, .20);
+            color: var(--rosado);
+            border-radius: 11px;
+            font-size: 19px;
+            flex-shrink: 0;
+        }
+
+        .seccion p {
+            line-height: 1.9;
+            color: var(--secundario);
+            font-size: 14px;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+            margin: 0;
+        }
+
+        /* BOTON VOLVER */
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            padding: 14px 22px;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+            box-shadow: 0 8px 23px #a855f725;
+        }
+
+        .volver:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px #e879f930;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            header a {
+                width: 100%;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 14px;
+            }
+
+            .hoja {
+                padding: 25px 19px;
+            }
+
+            .nombre {
+                font-size: 24px;
+            }
+
+            .avatar {
+                width: 74px;
+                height: 74px;
+                font-size: 35px;
+            }
+
+            .seccion {
+                padding: 19px 16px;
+            }
+
+            .seccion h3 {
+                font-size: 16px;
+            }
+
+            .volver {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .seccion,
+            .volver,
+            header a {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <div class="marca">
+
+            <div class="logo-icono">
+                <i class="bi bi-tree-fill"></i>
+            </div>
+
+            <div>
+                <h1>
+                    Conecta <span>Corredor</span>
+                </h1>
+                <small>Conectando oportunidades</small>
+            </div>
+
+        </div>
+
+        <a href="{{ url_for('ver_postulantes', id_empleo=id_empleo) }}">
+            <i class="bi bi-arrow-left"></i>
+            Volver a postulantes
+        </a>
+
+    </header>
+
+    <main>
+
+        <article class="hoja">
+
+            <!-- INFORMACION PRINCIPAL -->
+            <div class="perfil-encabezado">
+
+                <div class="avatar">
+                    <i class="bi bi-person-vcard-fill"></i>
+                </div>
+
+                <h2 class="nombre">
+                    {{ hoja_vida.nombre }}
+                </h2>
+
+                <p class="subtitulo">
+                    <i class="bi bi-file-earmark-person"></i>
+                    Hoja de vida
+                </p>
+
+                <div class="separador"></div>
+
+            </div>
+
+            <!-- UBICACION -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-geo-alt"></i>
+                    Ubicación
+                </h3>
+
+                <p>
+                    {{ hoja_vida.ubicacion or 'No registrada' }}
+                </p>
+
+            </div>
+
+            <!-- PERFIL PROFESIONAL -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-person-lines-fill"></i>
+                    Perfil profesional
+                </h3>
+
+                <p>
+                    {{ hoja_vida.perfil_profesional or 'No registrado' }}
+                </p>
+
+            </div>
+
+            <!-- NIVEL EDUCATIVO -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-mortarboard-fill"></i>
+                    Nivel educativo
+                </h3>
+
+                <p>
+                    {{ hoja_vida.nivel_educativo or 'No registrado' }}
+                </p>
+
+            </div>
+
+            <!-- FORMACION ACADEMICA -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-book-fill"></i>
+                    Formación académica
+                </h3>
+
+                <p>
+                    {{ hoja_vida.estudios or 'No registrada' }}
+                </p>
+
+            </div>
+
+            <!-- EXPERIENCIA LABORAL -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-briefcase-fill"></i>
+                    Experiencia laboral
+                </h3>
+
+                <p>
+                    {{ hoja_vida.experiencia_laboral or 'No registrada' }}
+                </p>
+
+            </div>
+
+            <!-- HABILIDADES -->
+            <div class="seccion">
+
+                <h3>
+                    <i class="bi bi-stars"></i>
+                    Habilidades
+                </h3>
+
+                <p>
+                    {{ hoja_vida.habilidades or 'No registradas' }}
+                </p>
+
+            </div>
+
+            <!-- BOTON VOLVER -->
+            <a
+                href="{{ url_for('ver_postulantes', id_empleo=id_empleo) }}"
+                class="volver"
+            >
+                <i class="bi bi-arrow-left"></i>
+                Volver a postulantes
+            </a>
+
+        </article>
+
+    </main>
+
+</body>
+</html>

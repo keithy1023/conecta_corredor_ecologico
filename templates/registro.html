@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px 15px;
+            min-height: 100vh;
+            color: var(--texto);
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 80%,
+                    rgba(232, 121, 249, .10),
+                    transparent 42%
+                ),
+                var(--fondo);
+        }
+
+        /* MARCA */
+        .marca {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 27px;
+        }
+
+        .marca-icono {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            font-size: 23px;
+            box-shadow: 0 0 25px #e879f935;
+        }
+
+        .marca-texto {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .marca-texto span {
+            color: var(--rosado);
+        }
+
+        /* CONTENEDOR */
+        .contenedor {
+            max-width: 680px;
+            margin: auto;
+            padding: 38px;
+            background: rgba(33, 25, 47, .97);
+            border-radius: 22px;
+            box-shadow: 0 15px 45px #00000035;
+            border: 1px solid var(--borde);
+            border-top: 3px solid var(--morado);
+        }
+
+        /* ICONO PRINCIPAL */
+        .icono-principal {
+            width: 76px;
+            height: 76px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            border-radius: 21px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 34px;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 25px #a855f735;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 30px;
+            margin: 0 0 12px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: var(--secundario);
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .separador {
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                #9333ea,
+                #e879f9
+            );
+            border-radius: 10px;
+            margin: 18px auto 25px;
+        }
+
+        /* FORMULARIO */
+        .grupo {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 9px;
+            color: #f0dcfa;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        label i {
+            color: var(--rosado);
+            margin-right: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #554267;
+            border-radius: 11px;
+            background: #171324;
+            color: var(--texto);
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            transition: .3s;
+        }
+
+        input:hover,
+        select:hover {
+            border-color: #88619e;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--morado);
+            background: #1b1528;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, .18);
+        }
+
+        input::placeholder {
+            color: #9d8caf;
+            opacity: 1;
+        }
+
+        select {
+            color-scheme: dark;
+            cursor: pointer;
+        }
+
+        select option {
+            background: #21192f;
+            color: white;
+        }
+
+        /* BOTON DE REGISTRO */
+        button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 15px;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            transition: .3s;
+            box-shadow: 0 8px 23px #a855f725;
+        }
+
+        button i {
+            margin-right: 7px;
+        }
+
+        button:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px #e879f930;
+        }
+
+        /* MENSAJES DE FLASK */
+        .mensajes {
+            background: rgba(244, 63, 94, .10);
+            color: #fda4af;
+            border: 1px solid rgba(244, 63, 94, .35);
+            padding: 14px 17px;
+            border-radius: 11px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .mensajes i {
+            margin-right: 8px;
+        }
+
+        /* ENLACES */
+        .enlaces {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--borde);
+            line-height: 1.9;
+            color: var(--secundario);
+            font-size: 14px;
+        }
+
+        .enlaces p {
+            margin: 0 0 12px;
+        }
+
+        a {
+            color: var(--rosado-claro);
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 11px 17px;
+            border: 1px solid #735184;
+            border-radius: 11px;
+            color: #f0dcfa;
+        }
+
+        .volver:hover {
+            background: rgba(168, 85, 247, .18);
+            border-color: var(--rosado);
+            text-decoration: none;
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            color: #a99ab9;
+            margin-top: 30px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            body {
+                padding: 22px 12px;
+            }
+
+            .contenedor {
+                padding: 27px 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .marca-texto {
+                font-size: 19px;
+            }
+
+            .icono-principal {
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            input,
+            select,
+            button,
+            a {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MARCA -->
+    <div class="marca">
+
+        <div class="marca-icono">
+            <i class="bi bi-tree-fill"></i>
+        </div>
+
+        <div class="marca-texto">
+            Conecta <span>Corredor</span>
+        </div>
+
+    </div>
+
+    <div class="contenedor">
+
+        <!-- ICONO -->
+        <div class="icono-principal">
+            <i class="bi bi-person-plus-fill"></i>
+        </div>
+
+        <!-- TITULO -->
+        <h1>Únete a Conecta Corredor</h1>
+
+        <div class="separador"></div>
+
+        <p class="subtitulo">
+            Crea tu cuenta y comienza a conectar con oportunidades
+            de empleo y servicios en tu comunidad.
+        </p>
+
+        <!-- MENSAJES DE FLASK -->
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <div class="mensajes">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    {{ mensaje }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- FORMULARIO DE REGISTRO -->
+        <form method="POST" action="{{ url_for('registro') }}">
+
+            <!-- NOMBRE -->
+            <div class="grupo">
+
+                <label for="nombre">
+                    <i class="bi bi-person-fill"></i>
+                    Nombre completo *
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ingresa tu nombre completo"
+                    required
+                    maxlength="100"
+                >
+
+            </div>
+
+            <!-- CEDULA -->
+            <div class="grupo">
+
+                <label for="cedula">
+                    <i class="bi bi-card-text"></i>
+                    Cédula *
+                </label>
+
+                <input
+                    type="text"
+                    id="cedula"
+                    name="cedula"
+                    placeholder="Ingresa tu número de identificación"
+                    required
+                    maxlength="20"
+                >
+
+            </div>
+
+            <!-- TELEFONO -->
+            <div class="grupo">
+
+                <label for="telefono">
+                    <i class="bi bi-telephone-fill"></i>
+                    Teléfono
+                </label>
+
+                <input
+                    type="text"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Ingresa tu número de teléfono"
+                    maxlength="20"
+                >
+
+            </div>
+
+            <!-- CORREO -->
+            <div class="grupo">
+
+                <label for="correo">
+                    <i class="bi bi-envelope-fill"></i>
+                    Correo electrónico *
+                </label>
+
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="ejemplo@correo.com"
+                    required
+                    maxlength="100"
+                >
+
+            </div>
+
+            <!-- CONTRASENA -->
+            <div class="grupo">
+
+                <label for="contrasena">
+                    <i class="bi bi-lock-fill"></i>
+                    Contraseña *
+                </label>
+
+                <input
+                    type="password"
+                    id="contrasena"
+                    name="contrasena"
+                    placeholder="Mínimo 8 caracteres"
+                    required
+                    minlength="8"
+                    autocomplete="new-password"
+                >
+
+            </div>
+
+            <!-- TIPO DE USUARIO -->
+            <div class="grupo">
+
+                <label for="tipo_usuario">
+                    <i class="bi bi-people-fill"></i>
+                    Tipo de usuario *
+                </label>
+
+                <select
+                    id="tipo_usuario"
+                    name="tipo_usuario"
+                    required
+                >
+                    <option value="">Selecciona una opción</option>
+                    <option value="habitante">Habitante</option>
+                    <option value="empleador">Empleador</option>
+                </select>
+
+            </div>
+
+            <!-- UBICACION -->
+            <div class="grupo">
+
+                <label for="ubicacion">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    Ubicación
+                </label>
+
+                <input
+                    type="text"
+                    id="ubicacion"
+                    name="ubicacion"
+                    placeholder="Ej. Villavicencio, Meta"
+                    maxlength="100"
+                >
+
+            </div>
+
+            <!-- BOTON DE REGISTRO -->
+            <button type="submit">
+                <i class="bi bi-person-check-fill"></i>
+                Crear mi cuenta
+            </button>
+
+        </form>
+
+        <!-- ENLACES -->
+        <div class="enlaces">
+
+            <p>
+                ¿Ya tienes cuenta?
+                <a href="{{ url_for('login') }}">
+                    Inicia sesión
+                </a>
+            </p>
+
+            <a
+                href="{{ url_for('inicio') }}"
+                class="volver"
+            >
+                <i class="bi bi-arrow-left"></i>
+                Volver al inicio
+            </a>
+
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Conecta Corredor |
+        Conectando oportunidades en nuestra comunidad.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis ofertas | Conecta Corredor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--texto);
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 75%,
+                    rgba(232, 121, 249, .10),
+                    transparent 40%
+                ),
+                var(--fondo);
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: rgba(23, 19, 36, .96);
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            box-shadow: 0 0 25px #e879f935;
+            font-size: 24px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: -.5px;
+        }
+
+        header h1 span {
+            color: var(--rosado);
+        }
+
+        .marca small {
+            display: block;
+            margin-top: 5px;
+            color: var(--secundario);
+            font-size: 12px;
+        }
+
+        header a {
+            color: #f0dcfa;
+            text-decoration: none;
+            border: 1px solid #735184;
+            border-radius: 11px;
+            padding: 12px 17px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        header a:hover {
+            background: rgba(168, 85, 247, .18);
+            border-color: var(--rosado);
+            color: white;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* PORTADA */
+        .encabezado {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 32px;
+            border-radius: 22px;
+            margin-bottom: 25px;
+            border: 1px solid #69427e;
+            background: linear-gradient(
+                120deg,
+                #35204f,
+                #21192f
+            );
+            box-shadow: 0 12px 35px #00000025;
+        }
+
+        .encabezado-icono {
+            width: 76px;
+            height: 76px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 21px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            font-size: 34px;
+            box-shadow: 0 8px 25px #a855f735;
+        }
+
+        h2 {
+            color: white;
+            margin: 0 0 10px;
+            font-size: 29px;
+        }
+
+        .encabezado p {
+            color: #e2d0ec;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* BOTONES */
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border: none;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            text-decoration: none;
+            padding: 13px 19px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+            box-shadow: 0 7px 20px #a855f725;
+        }
+
+        .boton:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px #e879f930;
+        }
+
+        .boton-cerrar {
+            background: rgba(232, 121, 249, .09);
+            color: #f0abfc;
+            border: 1px solid #b85bc7;
+            box-shadow: none;
+        }
+
+        .boton-cerrar:hover {
+            background: #9b367e;
+            color: white;
+        }
+
+        .publicar {
+            margin: 0 0 26px;
+        }
+
+        /* TARJETAS DE OFERTAS */
+        .oferta {
+            background: rgba(33, 25, 47, .97);
+            padding: 29px;
+            border-radius: 18px;
+            margin-bottom: 22px;
+            border: 1px solid var(--borde);
+            border-left: 5px solid var(--morado);
+            box-shadow: 0 10px 30px #00000020;
+            transition: .3s;
+        }
+
+        .oferta:hover {
+            transform: translateY(-4px);
+            border-color: #86519c;
+            border-left-color: var(--rosado);
+            box-shadow: 0 15px 35px #a855f71c;
+        }
+
+        h3 {
+            color: #f0abfc;
+            margin: 0 0 17px;
+            font-size: 22px;
+        }
+
+        .descripcion {
+            color: #dfd1e8;
+            line-height: 1.75;
+            margin-bottom: 22px;
+            white-space: pre-line;
+        }
+
+        /* DATOS DE CADA OFERTA */
+        .datos {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 4px 25px;
+        }
+
+        .dato {
+            margin: 12px 0;
+            color: var(--secundario);
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .dato strong {
+            color: #f8f5ff;
+        }
+
+        .dato i {
+            color: var(--rosado);
+            margin-right: 9px;
+        }
+
+        /* ESTADOS */
+        .estado {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: rgba(168, 85, 247, .18);
+            color: #e8c7ff;
+            border: 1px solid #a855f760;
+            text-transform: capitalize;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .cerrado {
+            background: #302737;
+            color: #c4b5d6;
+            border-color: #66546e;
+        }
+
+        /* ACCIONES */
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid var(--borde);
+        }
+
+        /* MENSAJES */
+        .mensaje {
+            background: rgba(168, 85, 247, .13);
+            color: #f3d6ff;
+            padding: 15px 18px;
+            border: 1px solid #e879f955;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .mensaje i {
+            color: var(--rosado);
+            margin-right: 8px;
+        }
+
+        /* SIN OFERTAS */
+        .vacio {
+            background: rgba(33, 25, 47, .97);
+            padding: 50px 25px;
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+            text-align: center;
+            box-shadow: 0 12px 35px #00000020;
+        }
+
+        .vacio > i {
+            display: block;
+            font-size: 58px;
+            color: var(--rosado);
+            margin-bottom: 17px;
+        }
+
+        .vacio h3 {
+            color: white;
+            margin-top: 15px;
+        }
+
+        .vacio p {
+            color: var(--secundario);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #a99ab9;
+            font-size: 13px;
+        }
+
+        /* CELULARES */
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            header h1 {
+                font-size: 21px;
+            }
+
+            header a {
+                width: 100%;
+                text-align: center;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 14px;
+            }
+
+            .encabezado {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+
+            .encabezado-icono {
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            .oferta {
+                padding: 22px 19px;
+            }
+
+            .datos {
+                grid-template-columns: 1fr;
+            }
+
+            .acciones {
+                flex-direction: column;
+            }
+
+            .acciones .boton,
+            .acciones form,
+            .acciones form button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .oferta,
+            .boton,
+            header a {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="marca">
+            <div class="logo">
+                <i class="bi bi-tree-fill"></i>
+            </div>
+
+            <div>
+                <h1>Conecta <span>Corredor</span></h1>
+                <small>Conectando oportunidades</small>
+            </div>
+        </div>
+
+        <a href="{{ url_for('dashboard') }}">
+            <i class="bi bi-arrow-left"></i>
+            Volver al panel
+        </a>
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+        <div class="encabezado">
+            <div class="encabezado-icono">
+                <i class="bi bi-briefcase-fill"></i>
+            </div>
+
+            <div>
+                <h2>Mis ofertas de empleo</h2>
+                <p>
+                    Consulta y administra las oportunidades laborales
+                    que has publicado en tu comunidad.
+                </p>
+            </div>
+        </div>
+
+        <!-- MENSAJES DE FLASK -->
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <div class="mensaje">
+                    <i class="bi bi-info-circle-fill"></i>
+                    {{ mensaje }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <!-- PUBLICAR OFERTA -->
+        <p class="publicar">
+            <a class="boton" href="{{ url_for('publicar_empleo') }}">
+                <i class="bi bi-plus-circle-fill"></i>
+                Publicar nueva oferta
+            </a>
+        </p>
+
+        <!-- LISTADO DE OFERTAS -->
+        {% if empleos %}
+
+            {% for empleo in empleos %}
+
+                <article class="oferta">
+
+                    <h3>{{ empleo.titulo }}</h3>
+
+                    <p class="descripcion">
+                        {{ empleo.descripcion }}
+                    </p>
+
+                    <div class="datos">
+
+                        <p class="dato">
+                            <i class="bi bi-tag-fill"></i>
+                            <strong>Categoría:</strong>
+                            {{ empleo.categoria }}
+                        </p>
+
+                        <p class="dato">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <strong>Ubicación:</strong>
+                            {{ empleo.ubicacion }}
+                        </p>
+
+                        <p class="dato">
+                            <i class="bi bi-cash-coin"></i>
+                            <strong>Salario:</strong>
+
+                            {% if empleo.salario is not none %}
+                                ${{ "{:,.0f}".format(empleo.salario) }} COP
+                            {% else %}
+                                No especificado
+                            {% endif %}
+                        </p>
+
+                        <p class="dato">
+                            <i class="bi bi-file-earmark-text-fill"></i>
+                            <strong>Contrato:</strong>
+                            {{ empleo.tipo_contrato or 'No especificado' }}
+                        </p>
+
+                        <p class="dato">
+                            <i class="bi bi-circle-fill"></i>
+                            <strong>Estado:</strong>
+
+                            <span class="estado {% if empleo.estado == 'cerrado' %}cerrado{% endif %}">
+                                {{ empleo.estado }}
+                            </span>
+                        </p>
+
+                    </div>
+
+                    <!-- ACCIONES ORIGINALES -->
+                    <div class="acciones">
+
+                        <a class="boton"
+                           href="{{ url_for('ver_postulantes', id_empleo=empleo.id_empleo) }}">
+                            <i class="bi bi-people-fill"></i>
+                            Ver postulantes
+                        </a>
+
+                        {% if empleo.estado == 'disponible' %}
+
+                            <form method="POST"
+                                  action="{{ url_for('cerrar_empleo', id_empleo=empleo.id_empleo) }}"
+                                  onsubmit="return confirm('¿Seguro que deseas cerrar esta oferta?');">
+
+                                <button class="boton boton-cerrar" type="submit">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                    Cerrar oferta
+                                </button>
+
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <!-- CUANDO NO EXISTEN OFERTAS -->
+            <div class="vacio">
+
+                <i class="bi bi-briefcase"></i>
+
+                <h3>Aún no has publicado ofertas</h3>
+
+                <p>
+                    Cuando publiques una oportunidad laboral,
+                    aparecerá aquí para que puedas administrarla.
+                </p>
+
+                <a class="boton" href="{{ url_for('publicar_empleo') }}">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Publicar mi primera oferta
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        © 2026 Conecta Corredor | Conectando oportunidades en nuestra comunidad.
+    </footer>
+
+</body>
+</html>

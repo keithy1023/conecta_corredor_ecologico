@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mis postulaciones | Conecta Corredor</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --fondo: #110f1d;
+            --header: #171324;
+            --tarjeta: #21192f;
+            --morado: #a855f7;
+            --rosado: #e879f9;
+            --rosado-claro: #f0abfc;
+            --texto: #f8f5ff;
+            --secundario: #c4b5d6;
+            --borde: #40304f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: var(--texto);
+
+            background:
+                radial-gradient(
+                    ellipse at 90% 5%,
+                    rgba(168, 85, 247, .17),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 5% 75%,
+                    rgba(232, 121, 249, .10),
+                    transparent 42%
+                ),
+                var(--fondo);
+        }
+
+        /* BARRA DE NAVEGACION */
+        .navbar {
+            background: rgba(23, 19, 36, .97);
+            padding: 18px 0;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 23px;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        .navbar-brand:hover {
+            color: white;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            box-shadow: 0 0 25px #e879f935;
+            color: white;
+            font-size: 23px;
+        }
+
+        .marca-texto span {
+            color: var(--rosado);
+        }
+
+        .marca-texto small {
+            display: block;
+            margin-top: 4px;
+            color: var(--secundario);
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 17px;
+            border: 1px solid #735184;
+            border-radius: 11px;
+            background: transparent;
+            color: #f0dcfa;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .btn-volver:hover {
+            color: white;
+            border-color: var(--rosado);
+            background: rgba(168, 85, 247, .18);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contenido-principal {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* PORTADA */
+        .portada {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 32px;
+            margin-bottom: 28px;
+            border: 1px solid #69427e;
+            border-radius: 22px;
+            background: linear-gradient(
+                120deg,
+                #35204f,
+                #21192f
+            );
+            box-shadow: 0 12px 35px #00000025;
+        }
+
+        .portada-icono {
+            width: 78px;
+            height: 78px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 21px;
+            background: linear-gradient(
+                135deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            font-size: 35px;
+            box-shadow: 0 8px 25px #a855f735;
+        }
+
+        .titulo {
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            margin: 0 0 10px;
+        }
+
+        .portada .descripcion-portada {
+            color: #e2d0ec;
+            margin: 0;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* TARJETAS */
+        .tarjeta {
+            height: 100%;
+            border: 1px solid var(--borde);
+            border-left: 4px solid var(--morado);
+            border-radius: 18px;
+            background: rgba(33, 25, 47, .97);
+            color: var(--texto);
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            border-color: #86519c;
+            border-left-color: var(--rosado);
+            box-shadow: 0 15px 35px #a855f725 !important;
+        }
+
+        .tarjeta .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarjeta h5 {
+            color: var(--rosado-claro);
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 17px;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta p {
+            color: var(--secundario);
+            line-height: 1.7;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .tarjeta p strong {
+            color: #f8f5ff;
+        }
+
+        .tarjeta p i {
+            color: var(--rosado);
+            margin-right: 7px;
+        }
+
+        .tarjeta .text-muted {
+            color: #c4b5d6 !important;
+        }
+
+        .tarjeta hr {
+            border: 0;
+            border-top: 1px solid #665173;
+            opacity: 1;
+            margin-top: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* ESTADOS DE POSTULACION */
+        .estado {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            padding: 9px 15px;
+            border-radius: 22px;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 1.4;
+            border: 1px solid transparent;
+        }
+
+        .pendiente {
+            background: rgba(245, 158, 11, .13);
+            color: #fcd68a;
+            border-color: rgba(245, 158, 11, .35);
+        }
+
+        .aceptada {
+            background: rgba(34, 197, 94, .13);
+            color: #86efac;
+            border-color: rgba(34, 197, 94, .35);
+        }
+
+        .rechazada {
+            background: rgba(244, 63, 94, .13);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, .35);
+        }
+
+        /* CONTACTO DEL EMPLEADOR */
+        .contacto-empleador {
+            margin-top: 24px;
+            padding: 20px;
+            background: rgba(168, 85, 247, .09);
+            border: 1px solid rgba(232, 121, 249, .3);
+            border-radius: 15px;
+        }
+
+        .contacto-empleador h4 {
+            margin: 0 0 13px;
+            color: var(--rosado-claro);
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .contacto-empleador h4 i {
+            color: var(--rosado);
+            margin-right: 7px;
+        }
+
+        .contacto-empleador p {
+            color: #e2d0ec;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        /* BOTONES DE CONTACTO */
+        .boton-contacto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            margin: 8px 8px 0 0;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: .3s;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .boton-contacto:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .whatsapp {
+            background: #197a48;
+            border: 1px solid #2ca66a;
+        }
+
+        .whatsapp:hover {
+            background: #228b50;
+            box-shadow: 0 7px 18px #228b5035;
+        }
+
+        .correo {
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+        }
+
+        .correo:hover {
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            box-shadow: 0 7px 18px #a855f735;
+        }
+
+        /* MENSAJES DE FLASK */
+        .alert-info {
+            background: rgba(168, 85, 247, .13);
+            color: #f3d6ff;
+            border: 1px solid #e879f955;
+            border-radius: 12px;
+            padding: 15px 18px;
+            margin-bottom: 25px;
+            overflow-wrap: anywhere;
+        }
+
+        /* SIN POSTULACIONES */
+        .tarjeta-vacia {
+            background: rgba(33, 25, 47, .97);
+            color: var(--texto);
+            border: 1px solid var(--borde) !important;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px #00000025;
+        }
+
+        .tarjeta-vacia .icono-vacio {
+            font-size: 58px;
+            color: var(--rosado);
+        }
+
+        .tarjeta-vacia h4 {
+            color: white;
+            font-weight: bold;
+        }
+
+        .tarjeta-vacia p {
+            color: var(--secundario) !important;
+            line-height: 1.7;
+        }
+
+        .btn-empleos {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 22px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(
+                110deg,
+                #9333ea,
+                #db46c8
+            );
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .btn-empleos:hover {
+            color: white;
+            background: linear-gradient(
+                110deg,
+                #a855f7,
+                #e879f9
+            );
+            transform: translateY(-3px);
+        }
+
+        /* PIE DE PAGINA */
+        footer {
+            text-align: center;
+            color: #a99ab9;
+            padding: 30px 20px;
+            margin-top: 25px;
+            font-size: 13px;
+        }
+
+        /* ADAPTACION A CELULARES */
+        @media (max-width: 600px) {
+            .navbar .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .btn-volver {
+                width: 100%;
+            }
+
+            .portada {
+                flex-direction: column;
+                text-align: center;
+                padding: 27px 20px;
+            }
+
+            .portada-icono {
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+            }
+
+            .titulo {
+                font-size: 25px;
+            }
+
+            .tarjeta .card-body {
+                padding: 22px !important;
+            }
+
+            .boton-contacto {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tarjeta,
+            .boton-contacto,
+            .btn-volver,
+            .btn-empleos {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACION -->
+    <nav class="navbar">
+        <div class="container">
+
+            <a class="navbar-brand"
+               href="{{ url_for('dashboard') }}">
+
+                <span class="logo">
+                    <i class="bi bi-tree-fill"></i>
+                </span>
+
+                <span class="marca-texto">
+                    Conecta <span>Corredor</span>
+                    <small>Conectando oportunidades</small>
+                </span>
+
+            </a>
+
+            <a href="{{ url_for('dashboard') }}"
+               class="btn-volver">
+                <i class="bi bi-arrow-left"></i>
+                Volver al dashboard
+            </a>
+
+        </div>
+    </nav>
+
+    <main class="container py-5 contenido-principal">
+
+        <!-- PORTADA -->
+        <section class="portada">
+
+            <div class="portada-icono">
+                <i class="bi bi-file-earmark-person-fill"></i>
+            </div>
+
+            <div>
+                <h2 class="titulo">
+                    Mis postulaciones
+                </h2>
+
+                <p class="descripcion-portada">
+                    Consulta los empleos a los que te has postulado
+                    y revisa el estado de tus solicitudes.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- MENSAJES DE FLASK -->
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="alert alert-info">
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- LISTADO DE POSTULACIONES -->
+        {% if postulaciones %}
+
+            <div class="row g-4">
+
+                {% for postulacion in postulaciones %}
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card tarjeta shadow-sm">
+                            <div class="card-body p-4">
+
+                                <h5>
+                                    {{ postulacion.titulo }}
+                                </h5>
+
+                                <p class="text-muted">
+                                    {{ postulacion.descripcion }}
+                                </p>
+
+                                <p>
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <strong>Ubicación:</strong>
+                                    {{ postulacion.ubicacion }}
+                                </p>
+
+                                <p>
+                                    <i class="bi bi-person-circle"></i>
+                                    <strong>Empleador:</strong>
+                                    {{ postulacion.nombre_empleador }}
+                                </p>
+
+                                <p>
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <strong>Contrato:</strong>
+                                    {{ postulacion.tipo_contrato }}
+                                </p>
+
+                                <p>
+                                    <i class="bi bi-calendar"></i>
+                                    <strong>Fecha:</strong>
+                                    {{ postulacion.fecha_postulacion }}
+                                </p>
+
+                                <hr>
+
+                                <p class="mb-2">
+                                    <strong>Estado de postulación:</strong>
+                                </p>
+
+                                <span class="estado {{ postulacion.estado }}">
+                                    {% if postulacion.estado == 'pendiente' %}
+                                        ⏳ Pendiente
+                                    {% elif postulacion.estado == 'aceptada' %}
+                                        ✅ Aceptada
+                                    {% elif postulacion.estado == 'rechazada' %}
+                                        ❌ Rechazada
+                                    {% endif %}
+                                </span>
+
+                                <!-- CONTACTO SOLO SI FUE ACEPTADA -->
+                                {% if postulacion.estado == 'aceptada' %}
+
+                                    <div class="contacto-empleador">
+
+                                        <h4>
+                                            <i class="bi bi-person-lines-fill"></i>
+                                            Contacto del empleador
+                                        </h4>
+
+                                        {% if postulacion.telefono_empleador
+                                              or postulacion.correo_empleador %}
+
+                                            <p>
+                                                Tu postulación fue aceptada.
+                                                Puedes comunicarte con el empleador
+                                                mediante los siguientes medios:
+                                            </p>
+
+                                            {% if postulacion.telefono_empleador %}
+
+                                                {% set numero = postulacion.telefono_empleador
+                                                    | replace(' ', '')
+                                                    | replace('-', '')
+                                                    | replace('(', '')
+                                                    | replace(')', '')
+                                                    | replace('+', '') %}
+
+                                                {% if numero|length == 10
+                                                      and numero[:1] == '3' %}
+                                                    {% set numero = '57' ~ numero %}
+                                                {% endif %}
+
+                                                {% if numero.isdigit() %}
+
+                                                    <a
+                                                        href="https://wa.me/{{ numero }}"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="boton-contacto whatsapp"
+                                                    >
+                                                        <i class="bi bi-whatsapp"></i>
+                                                        Contactar por WhatsApp
+                                                    </a>
+
+                                                {% endif %}
+
+                                            {% endif %}
+
+                                            {% if postulacion.correo_empleador %}
+
+                                                <a
+                                                    href="mailto:{{ postulacion.correo_empleador }}"
+                                                    class="boton-contacto correo"
+                                                >
+                                                    <i class="bi bi-envelope-fill"></i>
+                                                    Enviar correo
+                                                </a>
+
+                                            {% endif %}
+
+                                        {% else %}
+
+                                            <p>
+                                                Tu postulación fue aceptada.
+                                                El empleador todavía no ha habilitado
+                                                sus datos de contacto.
+                                            </p>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <!-- CUANDO NO HAY POSTULACIONES -->
+            <div class="card tarjeta-vacia">
+                <div class="card-body text-center p-5">
+
+                    <i class="bi bi-inbox icono-vacio"></i>
+
+                    <h4 class="mt-3">
+                        Todavía no tienes postulaciones
+                    </h4>
+
+                    <p class="mt-3 mb-4">
+                        Explora las ofertas de empleo disponibles
+                        y postúlate a una oportunidad.
+                    </p>
+
+                    <a href="{{ url_for('empleos_disponibles') }}"
+                       class="btn-empleos">
+                        <i class="bi bi-search"></i>
+                        Buscar empleos
+                    </a>
+
+                </div>
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        © 2026 Conecta Corredor |
+        Conectando oportunidades en nuestra comunidad.
+    </footer>
+
+</body>
+</html>
